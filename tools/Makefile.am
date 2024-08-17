@@ -1,5 +1,4 @@
-bin_PROGRAMS = bzz c44 cjb2 cpaldjvu csepdjvu ddjvu djvm djvmcvt	\
- djvudump djvups djvuextract djvumake djvused djvutxt djvuserve
+bin_PROGRAMS = ddjvu
 
 jb2cmp_SOURCES = jb2cmp/classify.cpp jb2cmp/cuts.cpp		\
  jb2cmp/frames.cpp jb2cmp/patterns.cpp jb2cmp/classify.h	\
