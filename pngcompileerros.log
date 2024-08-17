@@ -1,0 +1,85 @@
+jsbien@JSBbookworm:~/git/djvu2mask/tools$ cd ..
+jsbien@JSBbookworm:~/git/djvu2mask$ make
+make  all-recursive
+make[1]: Entering directory '/home/jsbien/git/djvu2mask'
+Making all in libdjvu
+make[2]: Entering directory '/home/jsbien/git/djvu2mask/libdjvu'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/jsbien/git/djvu2mask/libdjvu'
+Making all in tools
+make[2]: Entering directory '/home/jsbien/git/djvu2mask/tools'
+  CXX      ddjvu-ddjvu.o
+ddjvu.cpp: In function ‘void save_png(const char*, char*, int, int)’:
+ddjvu.cpp:160:13: error: ‘die’ was not declared in this scope; did you mean ‘div’?
+  160 |     if(!fp) die("Could not open file for writing PNG");
+      |             ^~~
+      |             div
+ddjvu.cpp:163:15: error: ‘die’ was not declared in this scope; did you mean ‘div’?
+  163 |     if (!png) die("Could not create PNG write structure");
+      |               ^~~
+      |               div
+ddjvu.cpp:166:16: error: ‘die’ was not declared in this scope; did you mean ‘div’?
+  166 |     if (!info) die("Could not create PNG info structure");
+      |                ^~~
+      |                div
+ddjvu.cpp:168:34: error: ‘die’ was not declared in this scope; did you mean ‘div’?
+  168 |     if (setjmp(png_jmpbuf(png))) die("Error during PNG creation");
+      |                                  ^~~
+      |                                  div
+ddjvu.cpp: In function ‘void render(ddjvu_page_t*, int)’:
+ddjvu.cpp:558:49: warning: ‘uint32’ is deprecated [-Wdeprecated-declarations]
+  558 |         TIFFSetField(tiff, TIFFTAG_IMAGEWIDTH, (uint32)rrect.w);
+      |                                                 ^~~~~~
+In file included from tiff2pdf.h:27,
+                 from ddjvu.cpp:89:
+/usr/include/x86_64-linux-gnu/tiff.h:86:38: note: declared here
+   86 | typedef TIFF_MSC_DEPRECATED uint32_t uint32 TIFF_GCC_DEPRECATED;
+      |                                      ^~~~~~
+ddjvu.cpp:559:50: warning: ‘uint32’ is deprecated [-Wdeprecated-declarations]
+  559 |         TIFFSetField(tiff, TIFFTAG_IMAGELENGTH, (uint32)rrect.h);
+      |                                                  ^~~~~~
+/usr/include/x86_64-linux-gnu/tiff.h:86:38: note: declared here
+   86 | typedef TIFF_MSC_DEPRECATED uint32_t uint32 TIFF_GCC_DEPRECATED;
+      |                                      ^~~~~~
+ddjvu.cpp:575:57: warning: ‘uint32’ is deprecated [-Wdeprecated-declarations]
+  575 |               TIFFSetField(tiff, TIFFTAG_ROWSPERSTRIP, (uint32)64);
+      |                                                         ^~~~~~
+/usr/include/x86_64-linux-gnu/tiff.h:86:38: note: declared here
+   86 | typedef TIFF_MSC_DEPRECATED uint32_t uint32 TIFF_GCC_DEPRECATED;
+      |                                      ^~~~~~
+ddjvu.cpp:577:54: warning: ‘uint16’ is deprecated [-Wdeprecated-declarations]
+  577 |           TIFFSetField(tiff, TIFFTAG_BITSPERSAMPLE, (uint16)1);
+      |                                                      ^~~~~~
+/usr/include/x86_64-linux-gnu/tiff.h:83:38: note: declared here
+   83 | typedef TIFF_MSC_DEPRECATED uint16_t uint16 TIFF_GCC_DEPRECATED;
+      |                                      ^~~~~~
+ddjvu.cpp:578:56: warning: ‘uint16’ is deprecated [-Wdeprecated-declarations]
+  578 |           TIFFSetField(tiff, TIFFTAG_SAMPLESPERPIXEL, (uint16)1);
+      |                                                        ^~~~~~
+/usr/include/x86_64-linux-gnu/tiff.h:83:38: note: declared here
+   83 | typedef TIFF_MSC_DEPRECATED uint16_t uint16 TIFF_GCC_DEPRECATED;
+      |                                      ^~~~~~
+ddjvu.cpp:583:54: warning: ‘uint16’ is deprecated [-Wdeprecated-declarations]
+  583 |           TIFFSetField(tiff, TIFFTAG_BITSPERSAMPLE, (uint16)8);
+      |                                                      ^~~~~~
+/usr/include/x86_64-linux-gnu/tiff.h:83:38: note: declared here
+   83 | typedef TIFF_MSC_DEPRECATED uint16_t uint16 TIFF_GCC_DEPRECATED;
+      |                                      ^~~~~~
+ddjvu.cpp:585:58: warning: ‘uint16’ is deprecated [-Wdeprecated-declarations]
+  585 |             TIFFSetField(tiff, TIFFTAG_SAMPLESPERPIXEL, (uint16)1);
+      |                                                          ^~~~~~
+/usr/include/x86_64-linux-gnu/tiff.h:83:38: note: declared here
+   83 | typedef TIFF_MSC_DEPRECATED uint16_t uint16 TIFF_GCC_DEPRECATED;
+      |                                      ^~~~~~
+ddjvu.cpp:589:58: warning: ‘uint16’ is deprecated [-Wdeprecated-declarations]
+  589 |             TIFFSetField(tiff, TIFFTAG_SAMPLESPERPIXEL, (uint16)3);
+      |                                                          ^~~~~~
+/usr/include/x86_64-linux-gnu/tiff.h:83:38: note: declared here
+   83 | typedef TIFF_MSC_DEPRECATED uint16_t uint16 TIFF_GCC_DEPRECATED;
+      |                                      ^~~~~~
+make[2]: *** [Makefile:547: ddjvu-ddjvu.o] Error 1
+make[2]: Leaving directory '/home/jsbien/git/djvu2mask/tools'
+make[1]: *** [Makefile:431: all-recursive] Error 1
+make[1]: Leaving directory '/home/jsbien/git/djvu2mask'
+make: *** [Makefile:363: all] Error 2
+jsbien@JSBbookworm:~/git/djvu2mask$ 
