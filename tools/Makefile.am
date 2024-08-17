@@ -9,21 +9,6 @@ AM_CXXFLAGS = $(PTHREAD_CFLAGS)
 
 DJLIB = $(top_builddir)/libdjvu/libdjvulibre.la
 
-bzz_SOURCES = bzz.cpp common.h
-bzz_LDADD = $(DJLIB) $(PTHREAD_LIBS)
-
-c44_SOURCES = c44.cpp common.h
-c44_LDADD = $(DJLIB) $(PTHREAD_LIBS)
-
-cjb2_SOURCES = cjb2.cpp jb2tune.cpp common.h jb2tune.h $(jb2cmp_SOURCES)
-cjb2_CPPFLAGS = $(AM_CPPFLAGS) $(TIFF_CFLAGS)
-cjb2_LDADD = $(DJLIB) $(TIFF_LIBS) $(PTHREAD_LIBS)
-
-cpaldjvu_SOURCES = cpaldjvu.cpp jb2tune.cpp common.h jb2tune.h $(jb2cmp_SOURCES)
-cpaldjvu_LDADD = $(DJLIB) $(PTHREAD_LIBS)
-
-csepdjvu_SOURCES = csepdjvu.cpp jb2tune.cpp common.h jb2tune.h $(jb2cmp_SOURCES)
-csepdjvu_LDADD = $(DJLIB) $(PTHREAD_LIBS)
 
 ddjvu_SOURCES = ddjvu.cpp tiff2pdf.c tiff2pdf.h
 ddjvu_CPPFLAGS = -I$(top_srcdir)  $(AM_CPPFLAGS) $(TIFF_CFLAGS)
@@ -33,37 +18,7 @@ endif
 ddjvu_CFLAGS = $(THREAD_CFLAGS)
 ddjvu_LDADD = $(DJLIB) $(TIFF_LIBS) $(PTHREAD_LIBS)
 
-djvm_SOURCES = djvm.cpp common.h
-djvm_LDADD = $(DJLIB) $(PTHREAD_LIBS)
-
-djvmcvt_SOURCES = djvmcvt.cpp common.h
-djvmcvt_LDADD = $(DJLIB) $(PTHREAD_LIBS)
-
-djvudump_SOURCES = djvudump.cpp common.h
-djvudump_LDADD = $(DJLIB) $(PTHREAD_LIBS)
-
-djvuextract_SOURCES = djvuextract.cpp common.h
-djvuextract_LDADD = $(DJLIB) $(PTHREAD_LIBS)
-
-djvumake_SOURCES = djvumake.cpp common.h
-djvumake_LDADD = $(DJLIB) $(PTHREAD_LIBS)
-
-djvups_SOURCES = djvups.cpp
-djvups_CPPFLAGS = -I$(top_srcdir) $(AM_CPPFLAGS)
-djvups_LDADD = $(DJLIB) $(PTHREAD_LIBS)
-
-djvused_SOURCES = djvused.cpp common.h
-djvused_LDADD = $(DJLIB) $(PTHREAD_LIBS)
-
-djvuserve_SOURCES = djvuserve.cpp common.h
-djvuserve_LDADD = $(DJLIB) $(PTHREAD_LIBS)
-
-djvutxt_SOURCES = djvutxt.cpp
-djvutxt_CPPFLAGS = -I$(top_srcdir) $(AM_CPPFLAGS)
-djvutxt_LDADD = $(DJLIB) $(PTHREAD_LIBS)
-
-dist_bin_SCRIPTS = any2djvu djvudigital
-
 dist_man1_MANS =  ddjvu.1 
 
-EXTRA_DIST = jb2cmp/README tiff2pdf.c.diff
+
+
