@@ -229,7 +229,7 @@ AC_MSG_RESULT([${have_tiff}])
 # ----------------------------------------
 
 # Check compilation of xmltools
-want_xmltools="yes"
+want_xmltools="no"
 AC_ARG_ENABLE([xmltools],
    [AS_HELP_STRING([--disable-xmltools],
            [Disable djvu xml tools. @<:@default=enabled@:>@])],
@@ -241,7 +241,7 @@ AM_CONDITIONAL([WANT_XMLTOOLS], [test "x${want_xmltools}" = "xyes"])
 # Desktop files
 # ----------------------------------------
 
-ac_desktopfiles="yes"
+ac_desktopfiles="no"
 AC_ARG_ENABLE(desktopfiles,
     AS_HELP_STRING([--disable-desktopfiles], 
         [Do not install icons and mime types. @<:@default=enabled@:>@]),
