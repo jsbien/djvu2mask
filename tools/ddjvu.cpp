@@ -321,9 +321,13 @@ render(ddjvu_page_t *page, int pageno)
       mode==DDJVU_RENDER_MASKONLY ||
       (mode==DDJVU_RENDER_COLOR && type==DDJVU_PAGETYPE_BITONAL))
     {
-      style = DDJVU_FORMAT_GREY8;
-      if ((int)prect.w == iw && (int)prect.h == ih)
-        style = DDJVU_FORMAT_MSBTOLSB;
+      if (mode == DDJVU_RENDER_MASKONLY)
+	style = DDJVU_FORMAT_MSBTOLSB;
+      else
+	style = DDJVU_FORMAT_GREY8;
+#      style = DDJVU_FORMAT_GREY8;
+#      if ((int)prect.w == iw && (int)prect.h == ih)
+#        style = DDJVU_FORMAT_MSBTOLSB;
     }
   switch(flag_format)
     {
