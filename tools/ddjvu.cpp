@@ -71,6 +71,8 @@
 #include <fcntl.h>
 #include <errno.h>
 
+#include <png.h>
+
 #ifdef UNIX
 # include <sys/time.h>
 # include <sys/types.h>
@@ -149,6 +151,48 @@ TIFF *tiff = 0;
 #endif
 FILE *fout = 0;
 
+
+/* PNG Chat GPG */
+
+void save_png(const char* filename, char* image, int width, int height)
+{
+    FILE *fp = fopen(filename, "wb");
+    if(!fp) die("Could not open file for writing PNG");
+
+    png_structp png = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
+    if (!png) die("Could not create PNG write structure");
+
+    png_infop info = png_create_info_struct(png);
+    if (!info) die("Could not create PNG info structure");
+
+    if (setjmp(png_jmpbuf(png))) die("Error during PNG creation");
+
+    png_init_io(png, fp);
+
+    // Output is 1-bit depth, black and white
+    png_set_IHDR(
+        png,
+        info,
+        width, height,
+        1,
+        PNG_COLOR_TYPE_GRAY,
+        PNG_INTERLACE_NONE,
+        PNG_COMPRESSION_TYPE_DEFAULT,
+        PNG_FILTER_TYPE_DEFAULT
+    );
+
+    png_bytep rows[height];
+    for(int y = 0; y < height; y++) {
+        rows[y] = (png_bytep)(image + y * ((width + 7) / 8));
+    }
+    png_set_rows(png, info, rows);
+
+    png_write_png(png, info, PNG_TRANSFORM_IDENTITY, NULL);
+
+    fclose(fp);
+
+    png_destroy_write_struct(&png, &info);
+}
 
 
 /* Djvuapi events */
@@ -321,8 +365,30 @@ render(ddjvu_page_t *page, int pageno)
       mode==DDJVU_RENDER_MASKONLY ||
       (mode==DDJVU_RENDER_COLOR && type==DDJVU_PAGETYPE_BITONAL))
     {
+
 if (mode == DDJVU_RENDER_MASKONLY)
+{
     style = DDJVU_FORMAT_MSBTOLSB;
+
+    if ((int)prect.w == iw && (int)prect.h == ih)
+        style = DDJVU_FORMAT_MSBTOLSB;
+
+    // Allocate buffer for the mask
+    rowsize = (rrect.w + 7) / 8; 
+    image = (char*)malloc(rowsize * rrect.h);
+    if (!image) die("Cannot allocate image buffer for page");
+
+    // Render the page mask
+    if (!ddjvu_page_render(page, mode, &prect, &rrect, fmt, rowsize, image))
+        memset(image, 0xFF, rowsize * rrect.h); // Fill with white if rendering fails
+
+    // Save the mask as a PNG file
+    char filename[256];
+    sprintf(filename, "page-%d-mask.png", pageno);
+    save_png(filename, image, rrect.w, rrect.h);
+
+    free(image);
+}
 else
     style = DDJVU_FORMAT_GREY8;
 
