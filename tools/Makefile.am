@@ -64,8 +64,6 @@ djvutxt_LDADD = $(DJLIB) $(PTHREAD_LIBS)
 
 dist_bin_SCRIPTS = any2djvu djvudigital
 
-dist_man1_MANS = any2djvu.1 bzz.1 c44.1 cjb2.1 cpaldjvu.1 csepdjvu.1	\
- ddjvu.1 djvm.1 djvmcvt.1 djvu.1 djvudigital.1 djvudump.1		\
- djvuextract.1 djvumake.1 djvups.1 djvused.1 djvuserve.1 djvutxt.1
+dist_man1_MANS =  ddjvu.1 
 
 EXTRA_DIST = jb2cmp/README tiff2pdf.c.diff

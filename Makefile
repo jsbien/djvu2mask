@@ -106,7 +106,7 @@ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno config.status.lineno
 mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = config.h
-CONFIG_CLEAN_FILES = libdjvu/Makefile
+CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
@@ -166,10 +166,10 @@ am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/config/ar-lib \
 	$(top_srcdir)/config/config.h.in \
 	$(top_srcdir)/config/config.sub \
 	$(top_srcdir)/config/install-sh $(top_srcdir)/config/ltmain.sh \
-	$(top_srcdir)/config/missing $(top_srcdir)/libdjvu/Makefile.in \
-	AUTHORS COPYING ChangeLog INSTALL NEWS README.md config/ar-lib \
-	config/compile config/config.guess config/config.sub \
-	config/install-sh config/ltmain.sh config/missing
+	$(top_srcdir)/config/missing AUTHORS COPYING ChangeLog INSTALL \
+	NEWS README.md config/ar-lib config/compile \
+	config/config.guess config/config.sub config/install-sh \
+	config/ltmain.sh config/missing
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
 top_distdir = $(distdir)
@@ -411,8 +411,6 @@ $(top_srcdir)/config/config.h.in:  $(am__configure_deps)
 
 distclean-hdr:
 	-rm -f config.h stamp-h1
-libdjvu/Makefile: $(top_builddir)/config.status $(top_srcdir)/libdjvu/Makefile.in
-	cd $(top_builddir) && $(SHELL) ./config.status $@
 
 mostlyclean-libtool:
 	-rm -f *.lo

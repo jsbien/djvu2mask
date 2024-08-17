@@ -1,0 +1,448 @@
+jsbien@JSBbookworm:~/git/djvu2mask$ ./autogen.sh 
+autoreconf: export WARNINGS=all
+autoreconf: Entering directory '.'
+autoreconf: configure.ac: not using Gettext
+autoreconf: running: aclocal --force -I config
+autoreconf: configure.ac: tracing
+autoreconf: running: libtoolize --copy --force
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'config'.
+libtoolize: copying file 'config/ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'config'.
+libtoolize: copying file 'config/libtool.m4'
+libtoolize: copying file 'config/ltoptions.m4'
+libtoolize: copying file 'config/ltsugar.m4'
+libtoolize: copying file 'config/ltversion.m4'
+libtoolize: copying file 'config/lt~obsolete.m4'
+autoreconf: configure.ac: not using Intltool
+autoreconf: configure.ac: not using Gtkdoc
+autoreconf: running: aclocal --force -I config
+autoreconf: running: /usr/bin/autoconf --force
+configure.ac:41: warning: The macro `AC_CONFIG_HEADER' is obsolete.
+configure.ac:41: You should run autoupdate.
+./lib/autoconf/status.m4:719: AC_CONFIG_HEADER is expanded from...
+configure.ac:41: the top level
+configure.ac:161: warning: The macro `AC_HEADER_TIME' is obsolete.
+configure.ac:161: You should run autoupdate.
+./lib/autoconf/headers.m4:743: AC_HEADER_TIME is expanded from...
+configure.ac:161: the top level
+autoreconf: running: /usr/bin/autoheader --force
+autoreconf: running: automake --add-missing --copy --force-missing
+configure.ac:46: installing 'config/compile'
+configure.ac:44: installing 'config/missing'
+configure.ac:263: error: required file 'share/Makefile.in' not found
+tools/Makefile.am: installing 'config/depcomp'
+autoreconf: error: automake failed with exit status: 1
+jsbien@JSBbookworm:~/git/djvu2mask$ ./autogen.sh 
+autoreconf: export WARNINGS=all
+autoreconf: Entering directory '.'
+autoreconf: configure.ac: not using Gettext
+autoreconf: running: aclocal --force -I config
+autoreconf: configure.ac: tracing
+autoreconf: running: libtoolize --copy --force
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'config'.
+libtoolize: copying file 'config/ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'config'.
+libtoolize: copying file 'config/libtool.m4'
+libtoolize: copying file 'config/ltoptions.m4'
+libtoolize: copying file 'config/ltsugar.m4'
+libtoolize: copying file 'config/ltversion.m4'
+libtoolize: copying file 'config/lt~obsolete.m4'
+autoreconf: configure.ac: not using Intltool
+autoreconf: configure.ac: not using Gtkdoc
+autoreconf: running: aclocal --force -I config
+autoreconf: running: /usr/bin/autoconf --force
+configure.ac:41: warning: The macro `AC_CONFIG_HEADER' is obsolete.
+configure.ac:41: You should run autoupdate.
+./lib/autoconf/status.m4:719: AC_CONFIG_HEADER is expanded from...
+configure.ac:41: the top level
+configure.ac:161: warning: The macro `AC_HEADER_TIME' is obsolete.
+configure.ac:161: You should run autoupdate.
+./lib/autoconf/headers.m4:743: AC_HEADER_TIME is expanded from...
+configure.ac:161: the top level
+autoreconf: running: /usr/bin/autoheader --force
+autoreconf: running: automake --add-missing --copy --force-missing
+configure.ac:46: installing 'config/compile'
+configure.ac:44: installing 'config/missing'
+tools/Makefile.am: installing 'config/depcomp'
+autoreconf: Leaving directory '.'
+configure: error: cannot find sources (libdjvu/ddjvuapi.cpp) in . or ..
+jsbien@JSBbookworm:~/git/djvu2mask$ ./autogen.sh 
+autoreconf: export WARNINGS=all
+autoreconf: Entering directory '.'
+autoreconf: configure.ac: not using Gettext
+autoreconf: running: aclocal --force -I config
+autoreconf: configure.ac: tracing
+autoreconf: running: libtoolize --copy --force
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'config'.
+libtoolize: copying file 'config/ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'config'.
+libtoolize: copying file 'config/libtool.m4'
+libtoolize: copying file 'config/ltoptions.m4'
+libtoolize: copying file 'config/ltsugar.m4'
+libtoolize: copying file 'config/ltversion.m4'
+libtoolize: copying file 'config/lt~obsolete.m4'
+autoreconf: configure.ac: not using Intltool
+autoreconf: configure.ac: not using Gtkdoc
+autoreconf: running: aclocal --force -I config
+autoreconf: running: /usr/bin/autoconf --force
+configure.ac:41: warning: The macro `AC_CONFIG_HEADER' is obsolete.
+configure.ac:41: You should run autoupdate.
+./lib/autoconf/status.m4:719: AC_CONFIG_HEADER is expanded from...
+configure.ac:41: the top level
+configure.ac:161: warning: The macro `AC_HEADER_TIME' is obsolete.
+configure.ac:161: You should run autoupdate.
+./lib/autoconf/headers.m4:743: AC_HEADER_TIME is expanded from...
+configure.ac:161: the top level
+autoreconf: running: /usr/bin/autoheader --force
+autoreconf: running: automake --add-missing --copy --force-missing
+configure.ac:46: installing 'config/compile'
+configure.ac:44: installing 'config/missing'
+tools/Makefile.am: installing 'config/depcomp'
+autoreconf: Leaving directory '.'
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether make supports nested variables... (cached) yes
+checking whether make supports the include directive... yes (GNU style)
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to enable C11 features... none needed
+checking whether gcc understands -c and -o together... yes
+checking dependency style of gcc... gcc3
+checking for ar... ar
+checking the archiver (ar) interface... ar
+checking how to print strings... printf
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by gcc... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1879296
+checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for file... file
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for archiver @FILE support... @
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for sysroot... no
+checking for a working dd... /usr/bin/dd
+checking how to truncate binary pipes... /usr/bin/dd bs=4096 count=1
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC -DPIC
+checking if gcc PIC flag -fPIC -DPIC works... yes
+checking if gcc static flag -static works... yes
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... no
+checking for gcc options needed to detect all undeclared functions... none needed
+checking whether _WIN32 is declared... no
+checking whether __APPLE__ is declared... no
+checking whether make sets $(MAKE)... (cached) yes
+checking whether ln -s works... yes
+checking for a sed that does not truncate output... (cached) /usr/bin/sed
+checking for touch... /usr/bin/touch
+checking for rsvg-convert... false
+checking for inkscape... /usr/bin/inkscape
+checking for convert... /usr/bin/convert
+checking for rm... /usr/bin/rm
+checking for gcc... (cached) gcc
+checking whether the compiler supports GNU C... (cached) yes
+checking whether gcc accepts -g... (cached) yes
+checking for gcc option to enable C11 features... (cached) none needed
+checking whether gcc understands -c and -o together... (cached) yes
+checking dependency style of gcc... (cached) gcc3
+checking for g++... g++
+checking whether the compiler supports GNU C++... yes
+checking whether g++ accepts -g... yes
+checking for g++ option to enable C++11 features... none needed
+checking dependency style of g++... gcc3
+checking how to run the C++ preprocessor... g++ -E
+checking for ld used by g++... /usr/bin/ld -m elf_x86_64
+checking if the linker (/usr/bin/ld -m elf_x86_64) is GNU ld... yes
+checking whether the g++ linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking for g++ option to produce PIC... -fPIC -DPIC
+checking if g++ PIC flag -fPIC -DPIC works... yes
+checking if g++ static flag -static works... yes
+checking if g++ supports -c -o file.o... yes
+checking if g++ supports -c -o file.o... (cached) yes
+checking whether the g++ linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking dynamic linker characteristics... (cached) GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking if g++ accepts -O3... yes
+checking if g++ accepts -O3... yes
+checking if g++ accepts -Wall... yes
+checking if g++ accepts -Wall... yes
+checking whether the compiler recognizes bool as a built-in type... yes
+checking whether the compiler supports exceptions... yes
+checking whether the compiler recognizes typename... yes
+checking whether the compiler comes with standard includes... yes
+checking whether the compiler implements namespaces... yes
+checking whether the compiler supports member templates... yes
+checking whether the compiler supports intel atomic builtins... yes
+checking whether the compiler supports keyword __thread... yes
+checking for sqrt in -lm... yes
+checking for dirent.h that defines DIR... yes
+checking for library containing opendir... none required
+checking for sys/time.h... yes
+checking for sys/param.h... yes
+checking for vfork.h... no
+checking for sys/wait.h that is POSIX.1 compatible... yes
+checking for wchar.h... yes
+checking for wctype.h... yes
+checking for sys/mman.h... yes
+checking for iconv.h... yes
+checking for getopt.h... yes
+checking for langinfo.h... yes
+checking for sched.h... yes
+checking for new.h... no
+checking for stdint.h... (cached) yes
+checking for inttypes.h... (cached) yes
+checking for sys/ipc.h... yes
+checking for sys/shm.h... yes
+checking for cpuid.h... yes
+checking for int16_t... yes
+checking for int32_t... yes
+checking for uint16_t... yes
+checking for uint32_t... yes
+checking for wchar_t... yes
+checking for long long int... yes
+checking for mbstate_t... yes
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... no
+checking for getpagesize... yes
+checking for fork... yes
+checking for vfork... yes
+checking for working mmap... yes
+checking for pid_t... yes
+checking for working fork... yes
+checking for working vfork... (cached) yes
+checking for _LARGEFILE_SOURCE value needed for large files... no
+checking for wcrtomb... yes
+checking for iswspace... yes
+checking for setenv... yes
+checking for nl_langinfo... yes
+checking for putc_unlocked... yes
+checking for strerror... yes
+checking for vsnprintf... yes
+checking for gethostname... yes
+checking for strftime... yes
+checking for getpwuid... yes
+checking for sigaction... yes
+checking for mkstemp... yes
+checking for sched_yield... yes
+checking for iconv... yes
+checking for pthread.h... yes
+checking whether pthreads work with -pthread -lpthread... yes
+checking if more special flags are required for pthreads... no
+checking for jpeg library... yes
+checking for libjpeg... yes
+checking for the libtiff library... yes
+checking for libtiff... yes
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating libdjvu/Makefile
+config.status: creating tools/Makefile
+config.status: creating xmltools/Makefile
+config.status: creating share/Makefile
+config.status: creating desktopfiles/Makefile
+config.status: creating config.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+
+djvulibre 3.5.28
+
+Configuration Options Summary:
+
+  OS.................: linux-gnu
+  Win32 support......: no
+  Pthread support....: yes
+  Iconv support......: yes
+  JPEG support.......: yes
+  TIFF support.......: yes
+  XML tools..........: no
+  Desktop files......: no
+  Icon generation....: inkscape
+
+Compilation..........: make (or gmake)
+  CPPFLAGS...........: 
+  CFLAGS.............:  -g -O3 -Wall -DNDEBUG
+  CXXFLAGS...........:  -g -O3 -Wall -DNDEBUG
+  LDFLAGS............: 
+
+Installation...........: make install (as root if needed, with 'su' or 'sudo')
+  prefix...............: /usr/local
+
+jsbien@JSBbookworm:~/git/djvu2mask$ make
+make  all-recursive
+make[1]: Entering directory '/home/jsbien/git/djvu2mask'
+Making all in libdjvu
+make[2]: Entering directory '/home/jsbien/git/djvu2mask/libdjvu'
+make[2]: *** No rule to make target 'Makefile.am', needed by 'Makefile.in'.  Stop.
+make[2]: Leaving directory '/home/jsbien/git/djvu2mask/libdjvu'
+make[1]: *** [Makefile:433: all-recursive] Error 1
+make[1]: Leaving directory '/home/jsbien/git/djvu2mask'
+make: *** [Makefile:363: all] Error 2
+jsbien@JSBbookworm:~/git/djvu2mask$ git add *
+jsbien@JSBbookworm:~/git/djvu2mask$ git commit -m "4th attempt"
+[main d97fff9] 4th attempt
+ 109 files changed, 34218 insertions(+), 284 deletions(-)
+ create mode 100644 Makefile
+ create mode 100644 Makefile.in
+ create mode 100644 bad3.log
+ create mode 100644 config.h
+ create mode 100644 config.log
+ create mode 100755 config.status
+ create mode 100755 config/depcomp
+ create mode 100644 desktopfiles/Makefile
+ create mode 100644 desktopfiles/Makefile.in
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-Arrays.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-BSByteStream.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-BSEncodeByteStream.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-ByteStream.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DataPool.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVmDir.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVmDir0.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVmDoc.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVmNav.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVuAnno.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVuDocEditor.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVuDocument.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVuDumpHelper.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVuErrorList.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVuFile.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVuFileCache.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVuGlobal.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVuGlobalMemory.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVuImage.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVuInfo.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVuMessage.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVuMessageLite.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVuNavDir.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVuPalette.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVuPort.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVuText.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-DjVuToPS.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-GBitmap.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-GContainer.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-GException.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-GIFFManager.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-GMapAreas.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-GOS.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-GPixmap.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-GRect.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-GScaler.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-GSmartPointer.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-GString.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-GThreads.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-GURL.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-GUnicode.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-IFFByteStream.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-IW44EncodeCodec.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-IW44Image.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-JB2EncodeCodec.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-JB2Image.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-JPEGDecoder.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-MMRDecoder.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-MMX.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-UnicodeByteStream.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-XMLParser.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-XMLTags.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-ZPCodec.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-atomic.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-ddjvuapi.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-debug.Plo
+ create mode 100644 libdjvu/.deps/libdjvulibre_la-miniexp.Plo
+ create mode 100644 libdjvu/Makefile
+ create mode 100644 libdjvu/ddjvuapi.cpp
+ create mode 100644 libdjvu/ddjvuapi.h
+ create mode 100644 libdjvu/ddjvuapi.pc.in
+ create mode 100755 libtool
+ create mode 100644 share/Makefile
+ create mode 100644 share/Makefile.am
+ create mode 100644 share/Makefile.in
+ create mode 100644 stamp-h1
+ create mode 100644 tools/.deps/bzz.Po
+ create mode 100644 tools/.deps/c44.Po
+ create mode 100644 tools/.deps/cjb2-cjb2.Po
+ create mode 100644 tools/.deps/cjb2-jb2tune.Po
+ create mode 100644 tools/.deps/cpaldjvu.Po
+ create mode 100644 tools/.deps/csepdjvu.Po
+ create mode 100644 tools/.deps/ddjvu-ddjvu.Po
+ create mode 100644 tools/.deps/ddjvu-tiff2pdf.Po
+ create mode 100644 tools/.deps/djvm.Po
+ create mode 100644 tools/.deps/djvmcvt.Po
+ create mode 100644 tools/.deps/djvudump.Po
+ create mode 100644 tools/.deps/djvuextract.Po
+ create mode 100644 tools/.deps/djvumake.Po
+ create mode 100644 tools/.deps/djvups-djvups.Po
+ create mode 100644 tools/.deps/djvused.Po
+ create mode 100644 tools/.deps/djvuserve.Po
+ create mode 100644 tools/.deps/djvutxt-djvutxt.Po
+ create mode 100644 tools/.deps/jb2tune.Po
+ create mode 100644 tools/Makefile
+ create mode 100644 tools/Makefile.in
+ create mode 100644 tools/jb2cmp/.deps/cjb2-classify.Po
+ create mode 100644 tools/jb2cmp/.deps/cjb2-cuts.Po
+ create mode 100644 tools/jb2cmp/.deps/cjb2-frames.Po
+ create mode 100644 tools/jb2cmp/.deps/cjb2-patterns.Po
+ create mode 100644 tools/jb2cmp/.deps/classify.Po
+ create mode 100644 tools/jb2cmp/.deps/cuts.Po
+ create mode 100644 tools/jb2cmp/.deps/frames.Po
+ create mode 100644 tools/jb2cmp/.deps/patterns.Po
+ create mode 100644 xmltools/.deps/djvutoxml.Po
+ create mode 100644 xmltools/.deps/djvuxmlparser.Po
+ create mode 100644 xmltools/Makefile
+ create mode 100644 xmltools/Makefile.in
+jsbien@JSBbookworm:~/git/djvu2mask$ git push
+Enumerating objects: 101, done.
+Counting objects: 100% (101/101), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (92/92), done.
+Writing objects: 100% (100/100), 975.81 KiB | 8.34 MiB/s, done.
+Total 100 (delta 29), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (29/29), done.        
+To https://github.com/jsbien/djvu2mask.git
+   504ee4a..d97fff9  main -> main
+jsbien@JSBbookworm:~/git/djvu2mask$ 

@@ -89,11 +89,7 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = x86_64-pc-linux-gnu
 host_triplet = x86_64-pc-linux-gnu
-bin_PROGRAMS = bzz$(EXEEXT) c44$(EXEEXT) cjb2$(EXEEXT) \
-	cpaldjvu$(EXEEXT) csepdjvu$(EXEEXT) ddjvu$(EXEEXT) \
-	djvm$(EXEEXT) djvmcvt$(EXEEXT) djvudump$(EXEEXT) \
-	djvups$(EXEEXT) djvuextract$(EXEEXT) djvumake$(EXEEXT) \
-	djvused$(EXEEXT) djvutxt$(EXEEXT) djvuserve$(EXEEXT)
+bin_PROGRAMS = ddjvu$(EXEEXT)
 #am__append_1 = -D__USE_MINGW_ANSI_STDIO
 subdir = tools
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -115,67 +111,15 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(bindir)" \
 	"$(DESTDIR)$(man1dir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_bzz_OBJECTS = bzz.$(OBJEXT)
-bzz_OBJECTS = $(am_bzz_OBJECTS)
+am_ddjvu_OBJECTS = ddjvu-ddjvu.$(OBJEXT) ddjvu-tiff2pdf.$(OBJEXT)
+ddjvu_OBJECTS = $(am_ddjvu_OBJECTS)
 am__DEPENDENCIES_1 =
-bzz_DEPENDENCIES = $(DJLIB) $(am__DEPENDENCIES_1)
+ddjvu_DEPENDENCIES = $(DJLIB) $(am__DEPENDENCIES_1) \
+	$(am__DEPENDENCIES_1)
 AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-am_c44_OBJECTS = c44.$(OBJEXT)
-c44_OBJECTS = $(am_c44_OBJECTS)
-c44_DEPENDENCIES = $(DJLIB) $(am__DEPENDENCIES_1)
-am__dirstamp = $(am__leading_dot)dirstamp
-am__objects_1 = jb2cmp/cjb2-classify.$(OBJEXT) \
-	jb2cmp/cjb2-cuts.$(OBJEXT) jb2cmp/cjb2-frames.$(OBJEXT) \
-	jb2cmp/cjb2-patterns.$(OBJEXT)
-am_cjb2_OBJECTS = cjb2-cjb2.$(OBJEXT) cjb2-jb2tune.$(OBJEXT) \
-	$(am__objects_1)
-cjb2_OBJECTS = $(am_cjb2_OBJECTS)
-cjb2_DEPENDENCIES = $(DJLIB) $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
-am__objects_2 = jb2cmp/classify.$(OBJEXT) jb2cmp/cuts.$(OBJEXT) \
-	jb2cmp/frames.$(OBJEXT) jb2cmp/patterns.$(OBJEXT)
-am_cpaldjvu_OBJECTS = cpaldjvu.$(OBJEXT) jb2tune.$(OBJEXT) \
-	$(am__objects_2)
-cpaldjvu_OBJECTS = $(am_cpaldjvu_OBJECTS)
-cpaldjvu_DEPENDENCIES = $(DJLIB) $(am__DEPENDENCIES_1)
-am_csepdjvu_OBJECTS = csepdjvu.$(OBJEXT) jb2tune.$(OBJEXT) \
-	$(am__objects_2)
-csepdjvu_OBJECTS = $(am_csepdjvu_OBJECTS)
-csepdjvu_DEPENDENCIES = $(DJLIB) $(am__DEPENDENCIES_1)
-am_ddjvu_OBJECTS = ddjvu-ddjvu.$(OBJEXT) ddjvu-tiff2pdf.$(OBJEXT)
-ddjvu_OBJECTS = $(am_ddjvu_OBJECTS)
-ddjvu_DEPENDENCIES = $(DJLIB) $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
-am_djvm_OBJECTS = djvm.$(OBJEXT)
-djvm_OBJECTS = $(am_djvm_OBJECTS)
-djvm_DEPENDENCIES = $(DJLIB) $(am__DEPENDENCIES_1)
-am_djvmcvt_OBJECTS = djvmcvt.$(OBJEXT)
-djvmcvt_OBJECTS = $(am_djvmcvt_OBJECTS)
-djvmcvt_DEPENDENCIES = $(DJLIB) $(am__DEPENDENCIES_1)
-am_djvudump_OBJECTS = djvudump.$(OBJEXT)
-djvudump_OBJECTS = $(am_djvudump_OBJECTS)
-djvudump_DEPENDENCIES = $(DJLIB) $(am__DEPENDENCIES_1)
-am_djvuextract_OBJECTS = djvuextract.$(OBJEXT)
-djvuextract_OBJECTS = $(am_djvuextract_OBJECTS)
-djvuextract_DEPENDENCIES = $(DJLIB) $(am__DEPENDENCIES_1)
-am_djvumake_OBJECTS = djvumake.$(OBJEXT)
-djvumake_OBJECTS = $(am_djvumake_OBJECTS)
-djvumake_DEPENDENCIES = $(DJLIB) $(am__DEPENDENCIES_1)
-am_djvups_OBJECTS = djvups-djvups.$(OBJEXT)
-djvups_OBJECTS = $(am_djvups_OBJECTS)
-djvups_DEPENDENCIES = $(DJLIB) $(am__DEPENDENCIES_1)
-am_djvused_OBJECTS = djvused.$(OBJEXT)
-djvused_OBJECTS = $(am_djvused_OBJECTS)
-djvused_DEPENDENCIES = $(DJLIB) $(am__DEPENDENCIES_1)
-am_djvuserve_OBJECTS = djvuserve.$(OBJEXT)
-djvuserve_OBJECTS = $(am_djvuserve_OBJECTS)
-djvuserve_DEPENDENCIES = $(DJLIB) $(am__DEPENDENCIES_1)
-am_djvutxt_OBJECTS = djvutxt-djvutxt.$(OBJEXT)
-djvutxt_OBJECTS = $(am_djvutxt_OBJECTS)
-djvutxt_DEPENDENCIES = $(DJLIB) $(am__DEPENDENCIES_1)
 am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
 am__vpath_adj = case $$p in \
     $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
@@ -219,20 +163,8 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I. -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/bzz.Po ./$(DEPDIR)/c44.Po \
-	./$(DEPDIR)/cjb2-cjb2.Po ./$(DEPDIR)/cjb2-jb2tune.Po \
-	./$(DEPDIR)/cpaldjvu.Po ./$(DEPDIR)/csepdjvu.Po \
-	./$(DEPDIR)/ddjvu-ddjvu.Po ./$(DEPDIR)/ddjvu-tiff2pdf.Po \
-	./$(DEPDIR)/djvm.Po ./$(DEPDIR)/djvmcvt.Po \
-	./$(DEPDIR)/djvudump.Po ./$(DEPDIR)/djvuextract.Po \
-	./$(DEPDIR)/djvumake.Po ./$(DEPDIR)/djvups-djvups.Po \
-	./$(DEPDIR)/djvused.Po ./$(DEPDIR)/djvuserve.Po \
-	./$(DEPDIR)/djvutxt-djvutxt.Po ./$(DEPDIR)/jb2tune.Po \
-	jb2cmp/$(DEPDIR)/cjb2-classify.Po \
-	jb2cmp/$(DEPDIR)/cjb2-cuts.Po jb2cmp/$(DEPDIR)/cjb2-frames.Po \
-	jb2cmp/$(DEPDIR)/cjb2-patterns.Po jb2cmp/$(DEPDIR)/classify.Po \
-	jb2cmp/$(DEPDIR)/cuts.Po jb2cmp/$(DEPDIR)/frames.Po \
-	jb2cmp/$(DEPDIR)/patterns.Po
+am__depfiles_remade = ./$(DEPDIR)/ddjvu-ddjvu.Po \
+	./$(DEPDIR)/ddjvu-tiff2pdf.Po
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -270,16 +202,8 @@ AM_V_CXXLD = $(am__v_CXXLD_$(V))
 am__v_CXXLD_ = $(am__v_CXXLD_$(AM_DEFAULT_VERBOSITY))
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(bzz_SOURCES) $(c44_SOURCES) $(cjb2_SOURCES) \
-	$(cpaldjvu_SOURCES) $(csepdjvu_SOURCES) $(ddjvu_SOURCES) \
-	$(djvm_SOURCES) $(djvmcvt_SOURCES) $(djvudump_SOURCES) \
-	$(djvuextract_SOURCES) $(djvumake_SOURCES) $(djvups_SOURCES) \
-	$(djvused_SOURCES) $(djvuserve_SOURCES) $(djvutxt_SOURCES)
-DIST_SOURCES = $(bzz_SOURCES) $(c44_SOURCES) $(cjb2_SOURCES) \
-	$(cpaldjvu_SOURCES) $(csepdjvu_SOURCES) $(ddjvu_SOURCES) \
-	$(djvm_SOURCES) $(djvmcvt_SOURCES) $(djvudump_SOURCES) \
-	$(djvuextract_SOURCES) $(djvumake_SOURCES) $(djvups_SOURCES) \
-	$(djvused_SOURCES) $(djvuserve_SOURCES) $(djvutxt_SOURCES)
+SOURCES = $(ddjvu_SOURCES)
+DIST_SOURCES = $(ddjvu_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -578,87 +502,9 @@ clean-binPROGRAMS:
 	echo " rm -f" $$list; \
 	rm -f $$list
 
-bzz$(EXEEXT): $(bzz_OBJECTS) $(bzz_DEPENDENCIES) $(EXTRA_bzz_DEPENDENCIES) 
-	@rm -f bzz$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(bzz_OBJECTS) $(bzz_LDADD) $(LIBS)
-
-c44$(EXEEXT): $(c44_OBJECTS) $(c44_DEPENDENCIES) $(EXTRA_c44_DEPENDENCIES) 
-	@rm -f c44$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(c44_OBJECTS) $(c44_LDADD) $(LIBS)
-jb2cmp/$(am__dirstamp):
-	@$(MKDIR_P) jb2cmp
-	@: > jb2cmp/$(am__dirstamp)
-jb2cmp/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) jb2cmp/$(DEPDIR)
-	@: > jb2cmp/$(DEPDIR)/$(am__dirstamp)
-jb2cmp/cjb2-classify.$(OBJEXT): jb2cmp/$(am__dirstamp) \
-	jb2cmp/$(DEPDIR)/$(am__dirstamp)
-jb2cmp/cjb2-cuts.$(OBJEXT): jb2cmp/$(am__dirstamp) \
-	jb2cmp/$(DEPDIR)/$(am__dirstamp)
-jb2cmp/cjb2-frames.$(OBJEXT): jb2cmp/$(am__dirstamp) \
-	jb2cmp/$(DEPDIR)/$(am__dirstamp)
-jb2cmp/cjb2-patterns.$(OBJEXT): jb2cmp/$(am__dirstamp) \
-	jb2cmp/$(DEPDIR)/$(am__dirstamp)
-
-cjb2$(EXEEXT): $(cjb2_OBJECTS) $(cjb2_DEPENDENCIES) $(EXTRA_cjb2_DEPENDENCIES) 
-	@rm -f cjb2$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(cjb2_OBJECTS) $(cjb2_LDADD) $(LIBS)
-jb2cmp/classify.$(OBJEXT): jb2cmp/$(am__dirstamp) \
-	jb2cmp/$(DEPDIR)/$(am__dirstamp)
-jb2cmp/cuts.$(OBJEXT): jb2cmp/$(am__dirstamp) \
-	jb2cmp/$(DEPDIR)/$(am__dirstamp)
-jb2cmp/frames.$(OBJEXT): jb2cmp/$(am__dirstamp) \
-	jb2cmp/$(DEPDIR)/$(am__dirstamp)
-jb2cmp/patterns.$(OBJEXT): jb2cmp/$(am__dirstamp) \
-	jb2cmp/$(DEPDIR)/$(am__dirstamp)
-
-cpaldjvu$(EXEEXT): $(cpaldjvu_OBJECTS) $(cpaldjvu_DEPENDENCIES) $(EXTRA_cpaldjvu_DEPENDENCIES) 
-	@rm -f cpaldjvu$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(cpaldjvu_OBJECTS) $(cpaldjvu_LDADD) $(LIBS)
-
-csepdjvu$(EXEEXT): $(csepdjvu_OBJECTS) $(csepdjvu_DEPENDENCIES) $(EXTRA_csepdjvu_DEPENDENCIES) 
-	@rm -f csepdjvu$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(csepdjvu_OBJECTS) $(csepdjvu_LDADD) $(LIBS)
-
 ddjvu$(EXEEXT): $(ddjvu_OBJECTS) $(ddjvu_DEPENDENCIES) $(EXTRA_ddjvu_DEPENDENCIES) 
 	@rm -f ddjvu$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(ddjvu_OBJECTS) $(ddjvu_LDADD) $(LIBS)
-
-djvm$(EXEEXT): $(djvm_OBJECTS) $(djvm_DEPENDENCIES) $(EXTRA_djvm_DEPENDENCIES) 
-	@rm -f djvm$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(djvm_OBJECTS) $(djvm_LDADD) $(LIBS)
-
-djvmcvt$(EXEEXT): $(djvmcvt_OBJECTS) $(djvmcvt_DEPENDENCIES) $(EXTRA_djvmcvt_DEPENDENCIES) 
-	@rm -f djvmcvt$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(djvmcvt_OBJECTS) $(djvmcvt_LDADD) $(LIBS)
-
-djvudump$(EXEEXT): $(djvudump_OBJECTS) $(djvudump_DEPENDENCIES) $(EXTRA_djvudump_DEPENDENCIES) 
-	@rm -f djvudump$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(djvudump_OBJECTS) $(djvudump_LDADD) $(LIBS)
-
-djvuextract$(EXEEXT): $(djvuextract_OBJECTS) $(djvuextract_DEPENDENCIES) $(EXTRA_djvuextract_DEPENDENCIES) 
-	@rm -f djvuextract$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(djvuextract_OBJECTS) $(djvuextract_LDADD) $(LIBS)
-
-djvumake$(EXEEXT): $(djvumake_OBJECTS) $(djvumake_DEPENDENCIES) $(EXTRA_djvumake_DEPENDENCIES) 
-	@rm -f djvumake$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(djvumake_OBJECTS) $(djvumake_LDADD) $(LIBS)
-
-djvups$(EXEEXT): $(djvups_OBJECTS) $(djvups_DEPENDENCIES) $(EXTRA_djvups_DEPENDENCIES) 
-	@rm -f djvups$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(djvups_OBJECTS) $(djvups_LDADD) $(LIBS)
-
-djvused$(EXEEXT): $(djvused_OBJECTS) $(djvused_DEPENDENCIES) $(EXTRA_djvused_DEPENDENCIES) 
-	@rm -f djvused$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(djvused_OBJECTS) $(djvused_LDADD) $(LIBS)
-
-djvuserve$(EXEEXT): $(djvuserve_OBJECTS) $(djvuserve_DEPENDENCIES) $(EXTRA_djvuserve_DEPENDENCIES) 
-	@rm -f djvuserve$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(djvuserve_OBJECTS) $(djvuserve_LDADD) $(LIBS)
-
-djvutxt$(EXEEXT): $(djvutxt_OBJECTS) $(djvutxt_DEPENDENCIES) $(EXTRA_djvutxt_DEPENDENCIES) 
-	@rm -f djvutxt$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(djvutxt_OBJECTS) $(djvutxt_LDADD) $(LIBS)
 install-dist_binSCRIPTS: $(dist_bin_SCRIPTS)
 	@$(NORMAL_INSTALL)
 	@list='$(dist_bin_SCRIPTS)'; test -n "$(bindir)" || list=; \
@@ -697,37 +543,12 @@ uninstall-dist_binSCRIPTS:
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
-	-rm -f jb2cmp/*.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
 
-include ./$(DEPDIR)/bzz.Po # am--include-marker
-include ./$(DEPDIR)/c44.Po # am--include-marker
-include ./$(DEPDIR)/cjb2-cjb2.Po # am--include-marker
-include ./$(DEPDIR)/cjb2-jb2tune.Po # am--include-marker
-include ./$(DEPDIR)/cpaldjvu.Po # am--include-marker
-include ./$(DEPDIR)/csepdjvu.Po # am--include-marker
 include ./$(DEPDIR)/ddjvu-ddjvu.Po # am--include-marker
 include ./$(DEPDIR)/ddjvu-tiff2pdf.Po # am--include-marker
-include ./$(DEPDIR)/djvm.Po # am--include-marker
-include ./$(DEPDIR)/djvmcvt.Po # am--include-marker
-include ./$(DEPDIR)/djvudump.Po # am--include-marker
-include ./$(DEPDIR)/djvuextract.Po # am--include-marker
-include ./$(DEPDIR)/djvumake.Po # am--include-marker
-include ./$(DEPDIR)/djvups-djvups.Po # am--include-marker
-include ./$(DEPDIR)/djvused.Po # am--include-marker
-include ./$(DEPDIR)/djvuserve.Po # am--include-marker
-include ./$(DEPDIR)/djvutxt-djvutxt.Po # am--include-marker
-include ./$(DEPDIR)/jb2tune.Po # am--include-marker
-include jb2cmp/$(DEPDIR)/cjb2-classify.Po # am--include-marker
-include jb2cmp/$(DEPDIR)/cjb2-cuts.Po # am--include-marker
-include jb2cmp/$(DEPDIR)/cjb2-frames.Po # am--include-marker
-include jb2cmp/$(DEPDIR)/cjb2-patterns.Po # am--include-marker
-include jb2cmp/$(DEPDIR)/classify.Po # am--include-marker
-include jb2cmp/$(DEPDIR)/cuts.Po # am--include-marker
-include jb2cmp/$(DEPDIR)/frames.Po # am--include-marker
-include jb2cmp/$(DEPDIR)/patterns.Po # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -797,90 +618,6 @@ ddjvu-tiff2pdf.obj: tiff2pdf.c
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(AM_V_CXX_no)$(LTCXXCOMPILE) -c -o $@ $<
 
-cjb2-cjb2.o: cjb2.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT cjb2-cjb2.o -MD -MP -MF $(DEPDIR)/cjb2-cjb2.Tpo -c -o cjb2-cjb2.o `test -f 'cjb2.cpp' || echo '$(srcdir)/'`cjb2.cpp
-	$(AM_V_at)$(am__mv) $(DEPDIR)/cjb2-cjb2.Tpo $(DEPDIR)/cjb2-cjb2.Po
-#	$(AM_V_CXX)source='cjb2.cpp' object='cjb2-cjb2.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o cjb2-cjb2.o `test -f 'cjb2.cpp' || echo '$(srcdir)/'`cjb2.cpp
-
-cjb2-cjb2.obj: cjb2.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT cjb2-cjb2.obj -MD -MP -MF $(DEPDIR)/cjb2-cjb2.Tpo -c -o cjb2-cjb2.obj `if test -f 'cjb2.cpp'; then $(CYGPATH_W) 'cjb2.cpp'; else $(CYGPATH_W) '$(srcdir)/cjb2.cpp'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/cjb2-cjb2.Tpo $(DEPDIR)/cjb2-cjb2.Po
-#	$(AM_V_CXX)source='cjb2.cpp' object='cjb2-cjb2.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o cjb2-cjb2.obj `if test -f 'cjb2.cpp'; then $(CYGPATH_W) 'cjb2.cpp'; else $(CYGPATH_W) '$(srcdir)/cjb2.cpp'; fi`
-
-cjb2-jb2tune.o: jb2tune.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT cjb2-jb2tune.o -MD -MP -MF $(DEPDIR)/cjb2-jb2tune.Tpo -c -o cjb2-jb2tune.o `test -f 'jb2tune.cpp' || echo '$(srcdir)/'`jb2tune.cpp
-	$(AM_V_at)$(am__mv) $(DEPDIR)/cjb2-jb2tune.Tpo $(DEPDIR)/cjb2-jb2tune.Po
-#	$(AM_V_CXX)source='jb2tune.cpp' object='cjb2-jb2tune.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o cjb2-jb2tune.o `test -f 'jb2tune.cpp' || echo '$(srcdir)/'`jb2tune.cpp
-
-cjb2-jb2tune.obj: jb2tune.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT cjb2-jb2tune.obj -MD -MP -MF $(DEPDIR)/cjb2-jb2tune.Tpo -c -o cjb2-jb2tune.obj `if test -f 'jb2tune.cpp'; then $(CYGPATH_W) 'jb2tune.cpp'; else $(CYGPATH_W) '$(srcdir)/jb2tune.cpp'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/cjb2-jb2tune.Tpo $(DEPDIR)/cjb2-jb2tune.Po
-#	$(AM_V_CXX)source='jb2tune.cpp' object='cjb2-jb2tune.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o cjb2-jb2tune.obj `if test -f 'jb2tune.cpp'; then $(CYGPATH_W) 'jb2tune.cpp'; else $(CYGPATH_W) '$(srcdir)/jb2tune.cpp'; fi`
-
-jb2cmp/cjb2-classify.o: jb2cmp/classify.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT jb2cmp/cjb2-classify.o -MD -MP -MF jb2cmp/$(DEPDIR)/cjb2-classify.Tpo -c -o jb2cmp/cjb2-classify.o `test -f 'jb2cmp/classify.cpp' || echo '$(srcdir)/'`jb2cmp/classify.cpp
-	$(AM_V_at)$(am__mv) jb2cmp/$(DEPDIR)/cjb2-classify.Tpo jb2cmp/$(DEPDIR)/cjb2-classify.Po
-#	$(AM_V_CXX)source='jb2cmp/classify.cpp' object='jb2cmp/cjb2-classify.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o jb2cmp/cjb2-classify.o `test -f 'jb2cmp/classify.cpp' || echo '$(srcdir)/'`jb2cmp/classify.cpp
-
-jb2cmp/cjb2-classify.obj: jb2cmp/classify.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT jb2cmp/cjb2-classify.obj -MD -MP -MF jb2cmp/$(DEPDIR)/cjb2-classify.Tpo -c -o jb2cmp/cjb2-classify.obj `if test -f 'jb2cmp/classify.cpp'; then $(CYGPATH_W) 'jb2cmp/classify.cpp'; else $(CYGPATH_W) '$(srcdir)/jb2cmp/classify.cpp'; fi`
-	$(AM_V_at)$(am__mv) jb2cmp/$(DEPDIR)/cjb2-classify.Tpo jb2cmp/$(DEPDIR)/cjb2-classify.Po
-#	$(AM_V_CXX)source='jb2cmp/classify.cpp' object='jb2cmp/cjb2-classify.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o jb2cmp/cjb2-classify.obj `if test -f 'jb2cmp/classify.cpp'; then $(CYGPATH_W) 'jb2cmp/classify.cpp'; else $(CYGPATH_W) '$(srcdir)/jb2cmp/classify.cpp'; fi`
-
-jb2cmp/cjb2-cuts.o: jb2cmp/cuts.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT jb2cmp/cjb2-cuts.o -MD -MP -MF jb2cmp/$(DEPDIR)/cjb2-cuts.Tpo -c -o jb2cmp/cjb2-cuts.o `test -f 'jb2cmp/cuts.cpp' || echo '$(srcdir)/'`jb2cmp/cuts.cpp
-	$(AM_V_at)$(am__mv) jb2cmp/$(DEPDIR)/cjb2-cuts.Tpo jb2cmp/$(DEPDIR)/cjb2-cuts.Po
-#	$(AM_V_CXX)source='jb2cmp/cuts.cpp' object='jb2cmp/cjb2-cuts.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o jb2cmp/cjb2-cuts.o `test -f 'jb2cmp/cuts.cpp' || echo '$(srcdir)/'`jb2cmp/cuts.cpp
-
-jb2cmp/cjb2-cuts.obj: jb2cmp/cuts.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT jb2cmp/cjb2-cuts.obj -MD -MP -MF jb2cmp/$(DEPDIR)/cjb2-cuts.Tpo -c -o jb2cmp/cjb2-cuts.obj `if test -f 'jb2cmp/cuts.cpp'; then $(CYGPATH_W) 'jb2cmp/cuts.cpp'; else $(CYGPATH_W) '$(srcdir)/jb2cmp/cuts.cpp'; fi`
-	$(AM_V_at)$(am__mv) jb2cmp/$(DEPDIR)/cjb2-cuts.Tpo jb2cmp/$(DEPDIR)/cjb2-cuts.Po
-#	$(AM_V_CXX)source='jb2cmp/cuts.cpp' object='jb2cmp/cjb2-cuts.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o jb2cmp/cjb2-cuts.obj `if test -f 'jb2cmp/cuts.cpp'; then $(CYGPATH_W) 'jb2cmp/cuts.cpp'; else $(CYGPATH_W) '$(srcdir)/jb2cmp/cuts.cpp'; fi`
-
-jb2cmp/cjb2-frames.o: jb2cmp/frames.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT jb2cmp/cjb2-frames.o -MD -MP -MF jb2cmp/$(DEPDIR)/cjb2-frames.Tpo -c -o jb2cmp/cjb2-frames.o `test -f 'jb2cmp/frames.cpp' || echo '$(srcdir)/'`jb2cmp/frames.cpp
-	$(AM_V_at)$(am__mv) jb2cmp/$(DEPDIR)/cjb2-frames.Tpo jb2cmp/$(DEPDIR)/cjb2-frames.Po
-#	$(AM_V_CXX)source='jb2cmp/frames.cpp' object='jb2cmp/cjb2-frames.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o jb2cmp/cjb2-frames.o `test -f 'jb2cmp/frames.cpp' || echo '$(srcdir)/'`jb2cmp/frames.cpp
-
-jb2cmp/cjb2-frames.obj: jb2cmp/frames.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT jb2cmp/cjb2-frames.obj -MD -MP -MF jb2cmp/$(DEPDIR)/cjb2-frames.Tpo -c -o jb2cmp/cjb2-frames.obj `if test -f 'jb2cmp/frames.cpp'; then $(CYGPATH_W) 'jb2cmp/frames.cpp'; else $(CYGPATH_W) '$(srcdir)/jb2cmp/frames.cpp'; fi`
-	$(AM_V_at)$(am__mv) jb2cmp/$(DEPDIR)/cjb2-frames.Tpo jb2cmp/$(DEPDIR)/cjb2-frames.Po
-#	$(AM_V_CXX)source='jb2cmp/frames.cpp' object='jb2cmp/cjb2-frames.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o jb2cmp/cjb2-frames.obj `if test -f 'jb2cmp/frames.cpp'; then $(CYGPATH_W) 'jb2cmp/frames.cpp'; else $(CYGPATH_W) '$(srcdir)/jb2cmp/frames.cpp'; fi`
-
-jb2cmp/cjb2-patterns.o: jb2cmp/patterns.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT jb2cmp/cjb2-patterns.o -MD -MP -MF jb2cmp/$(DEPDIR)/cjb2-patterns.Tpo -c -o jb2cmp/cjb2-patterns.o `test -f 'jb2cmp/patterns.cpp' || echo '$(srcdir)/'`jb2cmp/patterns.cpp
-	$(AM_V_at)$(am__mv) jb2cmp/$(DEPDIR)/cjb2-patterns.Tpo jb2cmp/$(DEPDIR)/cjb2-patterns.Po
-#	$(AM_V_CXX)source='jb2cmp/patterns.cpp' object='jb2cmp/cjb2-patterns.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o jb2cmp/cjb2-patterns.o `test -f 'jb2cmp/patterns.cpp' || echo '$(srcdir)/'`jb2cmp/patterns.cpp
-
-jb2cmp/cjb2-patterns.obj: jb2cmp/patterns.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT jb2cmp/cjb2-patterns.obj -MD -MP -MF jb2cmp/$(DEPDIR)/cjb2-patterns.Tpo -c -o jb2cmp/cjb2-patterns.obj `if test -f 'jb2cmp/patterns.cpp'; then $(CYGPATH_W) 'jb2cmp/patterns.cpp'; else $(CYGPATH_W) '$(srcdir)/jb2cmp/patterns.cpp'; fi`
-	$(AM_V_at)$(am__mv) jb2cmp/$(DEPDIR)/cjb2-patterns.Tpo jb2cmp/$(DEPDIR)/cjb2-patterns.Po
-#	$(AM_V_CXX)source='jb2cmp/patterns.cpp' object='jb2cmp/cjb2-patterns.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cjb2_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o jb2cmp/cjb2-patterns.obj `if test -f 'jb2cmp/patterns.cpp'; then $(CYGPATH_W) 'jb2cmp/patterns.cpp'; else $(CYGPATH_W) '$(srcdir)/jb2cmp/patterns.cpp'; fi`
-
 ddjvu-ddjvu.o: ddjvu.cpp
 	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ddjvu_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ddjvu-ddjvu.o -MD -MP -MF $(DEPDIR)/ddjvu-ddjvu.Tpo -c -o ddjvu-ddjvu.o `test -f 'ddjvu.cpp' || echo '$(srcdir)/'`ddjvu.cpp
 	$(AM_V_at)$(am__mv) $(DEPDIR)/ddjvu-ddjvu.Tpo $(DEPDIR)/ddjvu-ddjvu.Po
@@ -894,34 +631,6 @@ ddjvu-ddjvu.obj: ddjvu.cpp
 #	$(AM_V_CXX)source='ddjvu.cpp' object='ddjvu-ddjvu.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ddjvu_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ddjvu-ddjvu.obj `if test -f 'ddjvu.cpp'; then $(CYGPATH_W) 'ddjvu.cpp'; else $(CYGPATH_W) '$(srcdir)/ddjvu.cpp'; fi`
-
-djvups-djvups.o: djvups.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(djvups_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT djvups-djvups.o -MD -MP -MF $(DEPDIR)/djvups-djvups.Tpo -c -o djvups-djvups.o `test -f 'djvups.cpp' || echo '$(srcdir)/'`djvups.cpp
-	$(AM_V_at)$(am__mv) $(DEPDIR)/djvups-djvups.Tpo $(DEPDIR)/djvups-djvups.Po
-#	$(AM_V_CXX)source='djvups.cpp' object='djvups-djvups.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(djvups_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o djvups-djvups.o `test -f 'djvups.cpp' || echo '$(srcdir)/'`djvups.cpp
-
-djvups-djvups.obj: djvups.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(djvups_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT djvups-djvups.obj -MD -MP -MF $(DEPDIR)/djvups-djvups.Tpo -c -o djvups-djvups.obj `if test -f 'djvups.cpp'; then $(CYGPATH_W) 'djvups.cpp'; else $(CYGPATH_W) '$(srcdir)/djvups.cpp'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/djvups-djvups.Tpo $(DEPDIR)/djvups-djvups.Po
-#	$(AM_V_CXX)source='djvups.cpp' object='djvups-djvups.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(djvups_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o djvups-djvups.obj `if test -f 'djvups.cpp'; then $(CYGPATH_W) 'djvups.cpp'; else $(CYGPATH_W) '$(srcdir)/djvups.cpp'; fi`
-
-djvutxt-djvutxt.o: djvutxt.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(djvutxt_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT djvutxt-djvutxt.o -MD -MP -MF $(DEPDIR)/djvutxt-djvutxt.Tpo -c -o djvutxt-djvutxt.o `test -f 'djvutxt.cpp' || echo '$(srcdir)/'`djvutxt.cpp
-	$(AM_V_at)$(am__mv) $(DEPDIR)/djvutxt-djvutxt.Tpo $(DEPDIR)/djvutxt-djvutxt.Po
-#	$(AM_V_CXX)source='djvutxt.cpp' object='djvutxt-djvutxt.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(djvutxt_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o djvutxt-djvutxt.o `test -f 'djvutxt.cpp' || echo '$(srcdir)/'`djvutxt.cpp
-
-djvutxt-djvutxt.obj: djvutxt.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(djvutxt_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT djvutxt-djvutxt.obj -MD -MP -MF $(DEPDIR)/djvutxt-djvutxt.Tpo -c -o djvutxt-djvutxt.obj `if test -f 'djvutxt.cpp'; then $(CYGPATH_W) 'djvutxt.cpp'; else $(CYGPATH_W) '$(srcdir)/djvutxt.cpp'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/djvutxt-djvutxt.Tpo $(DEPDIR)/djvutxt-djvutxt.Po
-#	$(AM_V_CXX)source='djvutxt.cpp' object='djvutxt-djvutxt.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(djvutxt_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o djvutxt-djvutxt.obj `if test -f 'djvutxt.cpp'; then $(CYGPATH_W) 'djvutxt.cpp'; else $(CYGPATH_W) '$(srcdir)/djvutxt.cpp'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -1087,8 +796,6 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
-	-rm -f jb2cmp/$(DEPDIR)/$(am__dirstamp)
-	-rm -f jb2cmp/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -1098,32 +805,8 @@ clean: clean-am
 clean-am: clean-binPROGRAMS clean-generic clean-libtool mostlyclean-am
 
 distclean: distclean-am
-		-rm -f ./$(DEPDIR)/bzz.Po
-	-rm -f ./$(DEPDIR)/c44.Po
-	-rm -f ./$(DEPDIR)/cjb2-cjb2.Po
-	-rm -f ./$(DEPDIR)/cjb2-jb2tune.Po
-	-rm -f ./$(DEPDIR)/cpaldjvu.Po
-	-rm -f ./$(DEPDIR)/csepdjvu.Po
-	-rm -f ./$(DEPDIR)/ddjvu-ddjvu.Po
+		-rm -f ./$(DEPDIR)/ddjvu-ddjvu.Po
 	-rm -f ./$(DEPDIR)/ddjvu-tiff2pdf.Po
-	-rm -f ./$(DEPDIR)/djvm.Po
-	-rm -f ./$(DEPDIR)/djvmcvt.Po
-	-rm -f ./$(DEPDIR)/djvudump.Po
-	-rm -f ./$(DEPDIR)/djvuextract.Po
-	-rm -f ./$(DEPDIR)/djvumake.Po
-	-rm -f ./$(DEPDIR)/djvups-djvups.Po
-	-rm -f ./$(DEPDIR)/djvused.Po
-	-rm -f ./$(DEPDIR)/djvuserve.Po
-	-rm -f ./$(DEPDIR)/djvutxt-djvutxt.Po
-	-rm -f ./$(DEPDIR)/jb2tune.Po
-	-rm -f jb2cmp/$(DEPDIR)/cjb2-classify.Po
-	-rm -f jb2cmp/$(DEPDIR)/cjb2-cuts.Po
-	-rm -f jb2cmp/$(DEPDIR)/cjb2-frames.Po
-	-rm -f jb2cmp/$(DEPDIR)/cjb2-patterns.Po
-	-rm -f jb2cmp/$(DEPDIR)/classify.Po
-	-rm -f jb2cmp/$(DEPDIR)/cuts.Po
-	-rm -f jb2cmp/$(DEPDIR)/frames.Po
-	-rm -f jb2cmp/$(DEPDIR)/patterns.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -1169,32 +852,8 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-		-rm -f ./$(DEPDIR)/bzz.Po
-	-rm -f ./$(DEPDIR)/c44.Po
-	-rm -f ./$(DEPDIR)/cjb2-cjb2.Po
-	-rm -f ./$(DEPDIR)/cjb2-jb2tune.Po
-	-rm -f ./$(DEPDIR)/cpaldjvu.Po
-	-rm -f ./$(DEPDIR)/csepdjvu.Po
-	-rm -f ./$(DEPDIR)/ddjvu-ddjvu.Po
+		-rm -f ./$(DEPDIR)/ddjvu-ddjvu.Po
 	-rm -f ./$(DEPDIR)/ddjvu-tiff2pdf.Po
-	-rm -f ./$(DEPDIR)/djvm.Po
-	-rm -f ./$(DEPDIR)/djvmcvt.Po
-	-rm -f ./$(DEPDIR)/djvudump.Po
-	-rm -f ./$(DEPDIR)/djvuextract.Po
-	-rm -f ./$(DEPDIR)/djvumake.Po
-	-rm -f ./$(DEPDIR)/djvups-djvups.Po
-	-rm -f ./$(DEPDIR)/djvused.Po
-	-rm -f ./$(DEPDIR)/djvuserve.Po
-	-rm -f ./$(DEPDIR)/djvutxt-djvutxt.Po
-	-rm -f ./$(DEPDIR)/jb2tune.Po
-	-rm -f jb2cmp/$(DEPDIR)/cjb2-classify.Po
-	-rm -f jb2cmp/$(DEPDIR)/cjb2-cuts.Po
-	-rm -f jb2cmp/$(DEPDIR)/cjb2-frames.Po
-	-rm -f jb2cmp/$(DEPDIR)/cjb2-patterns.Po
-	-rm -f jb2cmp/$(DEPDIR)/classify.Po
-	-rm -f jb2cmp/$(DEPDIR)/cuts.Po
-	-rm -f jb2cmp/$(DEPDIR)/frames.Po
-	-rm -f jb2cmp/$(DEPDIR)/patterns.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

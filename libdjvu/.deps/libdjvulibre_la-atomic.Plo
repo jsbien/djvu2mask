@@ -1,1 +1,5 @@
-# dummy
+libdjvulibre_la-atomic.lo: atomic.cpp /usr/include/stdc-predef.h atomic.h \
+ ../config.h
+/usr/include/stdc-predef.h:
+atomic.h:
+../config.h:
