@@ -27,4 +27,28 @@ omitted, the djvu file is read from the standard input.
 
 jsbien@JSBbookworm:~/git/djvu2mask/test$ ../tools/ddjvu -mode=mask Hochfeder-02_PT01_020bis.djvu mask.pbm
 jsbien@JSBbookworm:~/git/djvu2mask/test$ ../tools/ddjvu -mode=mask Hochfeder-02_PT01_020bis.djvu black.pbm
-
+jsbien@JSBbookworm:~/git/djvu2mask/test$ cd ..
+jsbien@JSBbookworm:~/git/djvu2mask$ git add *
+jsbien@JSBbookworm:~/git/djvu2mask$ git commit -m "tests"
+[main 149f1f4] tests
+ 6 files changed, 1177 insertions(+)
+ create mode 100644 compile.log
+ create mode 120000 test/.#mask.log
+ create mode 100644 test/Hochfeder-02_PT01_020bis.djvu
+ create mode 100644 test/black.pbm
+ create mode 100644 test/mask.log
+ create mode 100644 test/mask.pbm
+jsbien@JSBbookworm:~/git/djvu2mask$ git push
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (8/8), 55.02 KiB | 6.88 MiB/s, done.
+Total 8 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.        
+To https://github.com/jsbien/djvu2mask.git
+   7c5a3c8..149f1f4  main -> main
+jsbien@JSBbookworm:~/git/djvu2mask$ file black
+black: cannot open `black' (No such file or directory)
+jsbien@JSBbookworm:~/git/djvu2mask$ cd test/
+jsbien@JSBbookworm:~/git/djvu2mask/test$ 
