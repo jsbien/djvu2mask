@@ -21681,7 +21681,7 @@ printf "%s\n" "${have_tiff}" >&6; }
 # ----------------------------------------
 
 # Check compilation of xmltools
-want_xmltools="no"
+want_xmltools="yes"
 # Check whether --enable-xmltools was given.
 if test ${enable_xmltools+y}
 then :
@@ -21702,7 +21702,7 @@ fi
 # Desktop files
 # ----------------------------------------
 
-ac_desktopfiles="no"
+ac_desktopfiles="yes"
 # Check whether --enable-desktopfiles was given.
 if test ${enable_desktopfiles+y}
 then :
