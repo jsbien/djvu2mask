@@ -1,0 +1,78 @@
+jsbien@JSBbookworm:~/git/djvu2mask$ git add *
+jsbien@JSBbookworm:~/git/djvu2mask$ git commit -m "first attempt to compile"
+[main c7c3efd] first attempt to compile
+ 20 files changed, 29608 insertions(+)
+ create mode 100644 Makefile.am
+ create mode 100644 config/acinclude.m4
+ create mode 100755 config/ar-lib
+ create mode 100755 config/compile
+ create mode 100755 config/config.guess
+ create mode 100644 config/config.h.in
+ create mode 100755 config/config.sub
+ create mode 100755 config/depcomp
+ create mode 100755 config/install-sh
+ create mode 100644 config/libtool.m4
+ create mode 100755 config/ltmain.sh
+ create mode 100644 config/ltoptions.m4
+ create mode 100644 config/ltsugar.m4
+ create mode 100644 config/ltversion.m4
+ create mode 100644 config/lt~obsolete.m4
+ create mode 100755 config/missing
+ create mode 100644 config/pkg.m4
+ create mode 100755 configure.ac
+ create mode 100644 tools/ddjvu.1
+ create mode 100644 tools/ddjvu.cpp
+jsbien@JSBbookworm:~/git/djvu2mask$ git add autogen.sh 
+jsbien@JSBbookworm:~/git/djvu2mask$ git commit -m "first attempt to compile"
+[main 00127ef] first attempt to compile
+ 1 file changed, 7 insertions(+)
+ create mode 100755 autogen.sh
+jsbien@JSBbookworm:~/git/djvu2mask$ ./autogen.sh 
+autoreconf: export WARNINGS=all
+autoreconf: Entering directory '.'
+autoreconf: configure.ac: not using Gettext
+autoreconf: running: aclocal --force -I config
+autoreconf: configure.ac: tracing
+autoreconf: running: libtoolize --copy --force
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'config'.
+libtoolize: copying file 'config/ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'config'.
+libtoolize: copying file 'config/libtool.m4'
+libtoolize: copying file 'config/ltoptions.m4'
+libtoolize: copying file 'config/ltsugar.m4'
+libtoolize: copying file 'config/ltversion.m4'
+libtoolize: copying file 'config/lt~obsolete.m4'
+autoreconf: configure.ac: not using Intltool
+autoreconf: configure.ac: not using Gtkdoc
+autoreconf: running: aclocal --force -I config
+autoreconf: running: /usr/bin/autoconf --force
+configure.ac:41: warning: The macro `AC_CONFIG_HEADER' is obsolete.
+configure.ac:41: You should run autoupdate.
+./lib/autoconf/status.m4:719: AC_CONFIG_HEADER is expanded from...
+configure.ac:41: the top level
+configure.ac:161: warning: The macro `AC_HEADER_TIME' is obsolete.
+configure.ac:161: You should run autoupdate.
+./lib/autoconf/headers.m4:743: AC_HEADER_TIME is expanded from...
+configure.ac:161: the top level
+autoreconf: running: /usr/bin/autoheader --force
+autoreconf: running: automake --add-missing --copy --force-missing
+configure.ac:46: installing 'config/compile'
+configure.ac:44: installing 'config/missing'
+Makefile.am: error: required file './AUTHORS' not found
+Makefile.am: error: required file './ChangeLog' not found
+Makefile.am: installing './INSTALL'
+Makefile.am: error: required file './NEWS' not found
+Makefile.am: installing './COPYING' using GNU General Public License v3 file
+Makefile.am:     Consider adding the COPYING file to the version control system
+Makefile.am:     for your code, to avoid questions about which license your project uses
+configure.ac:263: error: required file 'libdjvu/Makefile.in' not found
+configure.ac:263: error: required file 'tools/Makefile.in' not found
+configure.ac:263: error: required file 'xmltools/Makefile.in' not found
+configure.ac:263: error: required file 'share/Makefile.in' not found
+configure.ac:263: error: required file 'desktopfiles/Makefile.in' not found
+Makefile.am:3: error: required directory ./libdjvu does not exist
+Makefile.am:3: error: required directory ./share does not exist
+Makefile.am:6: error: required directory ./xmltools does not exist
+Makefile.am:10: error: required directory ./desktopfiles does not exist
+autoreconf: error: automake failed with exit status: 1
+jsbien@JSBbookworm:~/git/djvu2mask$ 
