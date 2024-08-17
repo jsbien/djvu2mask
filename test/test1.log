@@ -1,0 +1,4 @@
+jsbien@JSBbookworm:~/git/djvu2mask/test$ ../tools/ddjvu -mode=mask Hochfeder-02_PT01_020bis.djvu mask1.pbm
+jsbien@JSBbookworm:~/git/djvu2mask/test$ identify mask1.pbm 
+mask1.pbm PBM 1120x302 1120x302+0+0 1-bit Bilevel Gray 42292B 0.000u 0:00.000
+jsbien@JSBbookworm:~/git/djvu2mask/test$ 
