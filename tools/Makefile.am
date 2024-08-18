@@ -1,4 +1,4 @@
-bin_PROGRAMS = ddjvu
+bin_PROGRAMS = ddjvu djvu2mask
 
 jb2cmp_SOURCES = jb2cmp/classify.cpp jb2cmp/cuts.cpp		\
  jb2cmp/frames.cpp jb2cmp/patterns.cpp jb2cmp/classify.h	\
@@ -18,7 +18,12 @@ endif
 ddjvu_CFLAGS = $(THREAD_CFLAGS)
 ddjvu_LDADD = $(DJLIB) $(TIFF_LIBS) $(PTHREAD_LIBS)
 
+djvu2mask_SOURCES = djvu2mask.cpp
+djvu2mask_CPPFLAGS = -I$(top_srcdir) $(AM_CPPFLAGS)
+djvu2mask_LDADD = $(DJLIB)
+
 dist_man1_MANS =  ddjvu.1 
+
 
 
 
