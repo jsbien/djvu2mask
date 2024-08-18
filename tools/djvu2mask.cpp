@@ -95,13 +95,8 @@ void render(ddjvu_page_t *page, int pageno) {
   fprintf(fout, "P4\n%d %d\n", rrect.w, rrect.h);
   for (int i = 0; i < (int)rrect.h; i++, image += rowsize)
     if (fwrite(image, 1, rowsize, fout) < (size_t)rowsize)
-      die("writing mask file: %s", strerror(errno));
-
-  ddjvu_format_release(format);
-  free(image);
-}
-
 int main(int argc, char **argv) {
+  FILE *fout;
   if (argc < 2) {
     fprintf(stderr, "Usage: djvu2mask <djvufile> [<outputfile>]\n");
     exit(1);
@@ -121,6 +116,24 @@ int main(int argc, char **argv) {
   while (!ddjvu_document_decoding_done(doc)) {
     fprintf(stderr, "Decoding in progress...\n");
   }
+
+  ddjvu_page_t *page = ddjvu_page_create_by_pageno(doc, 0);
+  if (!page) die("Failed to load page 0.");
+
+  fprintf(stderr, "Page 0 loaded, starting render...\n");
+
+  fout = (strcmp(outputfilename, "-") == 0) ? stdout : fopen(outputfilename, "wb");
+  if (!fout) die("Cannot open output file '%s'.", outputfilename);
+
+  render(page, 1);
+
+  fclose(fout);
+  ddjvu_page_release(page);
+  ddjvu_document_release(doc);
+  ddjvu_context_release(ctx);
+
+  return 0;
+}
 
   ddjvu_page_t *page = ddjvu_page_create_by_pageno(doc, 0);
   if (!page) die("Failed to load page 0.");
