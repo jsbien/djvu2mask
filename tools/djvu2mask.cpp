@@ -60,116 +60,105 @@ void die(const char *message_fmt, ...) {
 }
 
 void render(ddjvu_page_t *render_page, int pageno) {
-  ddjvu_rect_t rrect;
-  ddjvu_format_t *format;
-  int iw = ddjvu_page_get_width(page);
-  int ih = ddjvu_page_get_height(page);
-  char *image = 0;
-  char white = (char)0xFF;
-  int rowsize;
+    ddjvu_rect_t prect;
+    ddjvu_rect_t rrect;
+    ddjvu_format_t *format;
+    int iw = ddjvu_page_get_width(render_page);
+    int ih = ddjvu_page_get_height(render_page);
+    char *image = 0;
+    char white = (char)0xFF;
+    int rowsize;
 
-  // Debug: Output page dimensions
-  fprintf(stderr, "Rendering page %d: width=%d, height=%d\n", pageno, iw, ih);
+    // Debug: Output page dimensions
+    fprintf(stderr, "Rendering page %d: width=%d, height=%d\n", pageno, iw, ih);
 
-  prect.x = 0;
-  prect.y = 0;
-  prect.w = iw;
-  prect.h = ih;
+    prect.x = 0;
+    prect.y = 0;
+    prect.w = iw;
+    prect.h = ih;
 
-  rrect = prect;
+    rrect = prect;
 
-  format = ddjvu_format_create(DDJVU_FORMAT_MSBTOLSB, 0, 0);
-  if (!format) die("Failed to create format for rendering.");
-  ddjvu_format_set_row_order(format, 1);
+    format = ddjvu_format_create(DDJVU_FORMAT_MSBTOLSB, 0, 0);
+    if (!format) die("Failed to create format for rendering.");
+    ddjvu_format_set_row_order(format, 1);
 
-  rowsize = (rrect.w + 7) / 8;
-  image = (char*)malloc(rowsize * rrect.h);
-  if (!image) die("Cannot allocate image buffer for page %d", pageno);
+    rowsize = (rrect.w + 7) / 8;
+    image = (char*)malloc(rowsize * rrect.h);
+    if (!image) die("Cannot allocate image buffer for page %d", pageno);
 
-  if (!ddjvu_page_render(page, DDJVU_RENDER_MASKONLY, &prect, &rrect, format, rowsize, image)) {
-    memset(image, white, rowsize * rrect.h);
-    fprintf(stderr, "Warning: Page %d rendered as empty mask.\n", pageno);
-  }
+    if (!ddjvu_page_render(render_page, DDJVU_RENDER_MASKONLY, &prect, &rrect, format, rowsize, image)) {
+        memset(image, white, rowsize * rrect.h);
+        fprintf(stderr, "Warning: Page %d rendered as empty mask.\n", pageno);
+    }
 
-  fprintf(fout, "P4\n%d %d\n", rrect.w, rrect.h);
-  for (int i = 0; i < (int)rrect.h; i++, image += rowsize)
-    if (fwrite(image, 1, rowsize, fout) < (size_t)rowsize)
+    fprintf(fout, "P4\n%d %d\n", rrect.w, rrect.h);
+    for (int i = 0; i < (int)rrect.h; i++, image += rowsize)
+        if (fwrite(image, 1, rowsize, fout) < (size_t)rowsize)
+            die("writing mask file: %s", strerror(errno));
+
+    ddjvu_format_release(format);
+    free(image);
+}
+
+  fout = (strcmp(outputfilename, "-") == 0) ? stdout : fopen(outputfilename, "wb");
+  if (!fout) die("Cannot open output file '%s'.", outputfilename);
+
+  render(page, 1);
+
+  fclose(fout);
+  ddjvu_page_release(page);
+  ddjvu_document_release(doc);
+  ddjvu_context_release(ctx);
+
+  return 0;
+}
+
+
+  fclose(fout);
+  ddjvu_document_release(doc);
+  ddjvu_context_release(ctx);
+
+  return 0;
+}
+
+
 int main(int argc, char **argv) {
-  FILE *fout;
-  if (argc < 2) {
-    fprintf(stderr, "Usage: djvu2mask <djvufile> [<outputfile>]\n");
-    exit(1);
-  }
+    FILE *fout;
+    if (argc < 2) {
+        fprintf(stderr, "Usage: djvu2mask <djvufile> [<outputfile>]\n");
+        exit(1);
+    }
 
-  inputfilename = argv[1];
-  outputfilename = (argc > 2) ? argv[2] : "-";
+    inputfilename = argv[1];
+    outputfilename = (argc > 2) ? argv[2] : "-";
 
-  programname = argv[0];
-  ctx = ddjvu_context_create(programname);
-  if (!ctx) die("Cannot create djvu context. Error code: %d", errno);
+    programname = argv[0];
+    ctx = ddjvu_context_create(programname);
+    if (!ctx) die("Cannot create djvu context. Error code: %d", errno);
 
-  doc = ddjvu_document_create_by_filename(ctx, inputfilename, TRUE);
-  if (!doc) die("Cannot open djvu document '%s'. Error code: %d", inputfilename, errno);
+    doc = ddjvu_document_create_by_filename(ctx, inputfilename, TRUE);
+    if (!doc) die("Cannot open djvu document '%s'. Error code: %d", inputfilename, errno);
 
-  fprintf(stderr, "Document loaded: %s\n", inputfilename);
-  while (!ddjvu_document_decoding_done(doc)) {
-    fprintf(stderr, "Decoding in progress...\n");
-  }
+    fprintf(stderr, "Document loaded: %s\n", inputfilename);
+    while (!ddjvu_document_decoding_done(doc)) {
+        fprintf(stderr, "Decoding in progress...\n");
+    }
 
-  ddjvu_page_t *page = ddjvu_page_create_by_pageno(doc, 0);
-  if (!page) die("Failed to load page 0.");
+    ddjvu_page_t *page = ddjvu_page_create_by_pageno(doc, 0);
+    if (!page) die("Failed to load page 0.");
 
-  fprintf(stderr, "Page 0 loaded, starting render...\n");
+    fprintf(stderr, "Page 0 loaded, starting render...\n");
 
-  fout = (strcmp(outputfilename, "-") == 0) ? stdout : fopen(outputfilename, "wb");
-  if (!fout) die("Cannot open output file '%s'.", outputfilename);
+    fout = (strcmp(outputfilename, "-") == 0) ? stdout : fopen(outputfilename, "wb");
+    if (!fout) die("Cannot open output file '%s'.", outputfilename);
 
-  render(page, 1);
+    render(page, 1);
 
-  fclose(fout);
-  ddjvu_page_release(page);
-  ddjvu_document_release(doc);
-  ddjvu_context_release(ctx);
+    fclose(fout);
+    ddjvu_page_release(page);
+    ddjvu_document_release(doc);
+    ddjvu_context_release(ctx);
 
-  return 0;
-}
-
-  ddjvu_page_t *page = ddjvu_page_create_by_pageno(doc, 0);
-  if (!page) die("Failed to load page 0.");
-
-  fprintf(stderr, "Page 0 loaded, starting render...\n");
-
-  fout = (strcmp(outputfilename, "-") == 0) ? stdout : fopen(outputfilename, "wb");
-  if (!fout) die("Cannot open output file '%s'.", outputfilename);
-
-  render(page, 1);
-
-  fclose(fout);
-  ddjvu_page_release(page);
-  ddjvu_document_release(doc);
-  ddjvu_context_release(ctx);
-
-  return 0;
-}
-
-
-  fout = (strcmp(outputfilename, "-") == 0) ? stdout : fopen(outputfilename, "wb");
-  if (!fout) die("Cannot open output file '%s'.", outputfilename);
-
-  render(page, 1);
-
-  fclose(fout);
-  ddjvu_page_release(page);
-  ddjvu_document_release(doc);
-  ddjvu_context_release(ctx);
-
-  return 0;
-}
-
-
-  fclose(fout);
-  ddjvu_document_release(doc);
-  ddjvu_context_release(ctx);
-
-  return 0;
+    return 0;
 }
