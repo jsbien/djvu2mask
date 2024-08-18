@@ -1,4 +1,4 @@
-name: Debug Build with Make on Debian
+name: Clean Build with Correct Paths on Debian
 
 on:
   push:
@@ -24,19 +24,17 @@ jobs:
           apt-get update
           apt-get install -y build-essential libjpeg-dev libtiff-dev autotools-dev autoconf automake libtool
 
-      - name: Run autoreconf
+      - name: Clean previous builds
+        run: make distclean || true
+
+      - name: Regenerate configuration files
         run: autoreconf -fvi
 
-      - name: Verify configuration files
-        run: |
-          ls -l config/
-          ls -l
+      - name: Configure the project
+        run: ./configure
 
       - name: Force rebuild with make
         run: make -B VERBOSE=1
-
-      - name: Debug with make -n
-        run: make -n VERBOSE=1
 
       - name: List files in tools directory (debug)
         run: ls -l tools/
@@ -46,3 +44,4 @@ jobs:
 
       - name: Run the program with repository file
         run: ./tools/djvu2mask test/Hochfeder-02_PT01_020bis.djvu test/Hochfeder-02_PT01_020bis_output.png
+
