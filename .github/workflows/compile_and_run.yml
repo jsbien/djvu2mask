@@ -20,14 +20,14 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: apt-get update && apt-get install -y build-essential libjpeg-dev libtiff-dev	
+        run: apt-get update && apt-get install -y build-essential libjpeg-dev libtiff-dev
 
       - name: Build with make
         run: make
 
       - name: List files in tools directory (debug)
         run: ls -l tools/
-	
+
       - name: Run the program with repository file
         run: ./tools/djvu2mask test/Hochfeder-02_PT01_020bis.djvu test/Hochfeder-02_PT01_020bis_output.png
 
