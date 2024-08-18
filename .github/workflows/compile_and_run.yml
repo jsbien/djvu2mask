@@ -24,7 +24,17 @@ jobs:
           apt-get update
           apt-get install -y build-essential libjpeg-dev libtiff-dev autotools-dev autoconf automake libtool
 
-      - name: Run autoreconf
+      - name: Clean up existing Autotools files
+        run: |
+          rm -f aclocal.m4
+          rm -rf autom4te.cache
+          rm -f config.h.in
+          rm -f configure
+          rm -f Makefile.in
+          rm -f config/missing
+          rm -f config/depcomp
+
+      - name: Regenerate Autotools files with correct paths
         run: autoreconf -fvi
 
       - name: Build with make
