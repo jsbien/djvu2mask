@@ -49,19 +49,20 @@ unsigned long ticks(void) {
   return 0;
 }
 
-void die(const char *fmt, ...) {
+void die(const char *message_fmt, ...) {
   va_list args;
-  fprintf(stderr,"djvu2mask: ");
-  va_start(args, fmt);
-  vfprintf(stderr, fmt, args);
+  fprintf(stderr, "djvu2mask: ");
+  va_start(args, message_fmt);
+  vfprintf(stderr, message_fmt, args);
   va_end(args);
-  fprintf(stderr,"\n");
-void render(ddjvu_page_t *page, int pageno) {
+  fprintf(stderr, "\n");
+  exit(10);
 }
 
+void render(ddjvu_page_t *page, int pageno) {
   ddjvu_rect_t prect;
   ddjvu_rect_t rrect;
-  ddjvu_format_t *fmt;
+  ddjvu_format_t *format;
   int iw = ddjvu_page_get_width(page);
   int ih = ddjvu_page_get_height(page);
   char *image = 0;
@@ -78,15 +79,15 @@ void render(ddjvu_page_t *page, int pageno) {
 
   rrect = prect;
 
-  fmt = ddjvu_format_create(DDJVU_FORMAT_MSBTOLSB, 0, 0);
-  if (!fmt) die("Failed to create format for rendering.");
-  ddjvu_format_set_row_order(fmt, 1);
+  format = ddjvu_format_create(DDJVU_FORMAT_MSBTOLSB, 0, 0);
+  if (!format) die("Failed to create format for rendering.");
+  ddjvu_format_set_row_order(format, 1);
 
   rowsize = (rrect.w + 7) / 8;
   image = (char*)malloc(rowsize * rrect.h);
   if (!image) die("Cannot allocate image buffer for page %d", pageno);
 
-  if (!ddjvu_page_render(page, DDJVU_RENDER_MASKONLY, &prect, &rrect, fmt, rowsize, image)) {
+  if (!ddjvu_page_render(page, DDJVU_RENDER_MASKONLY, &prect, &rrect, format, rowsize, image)) {
     memset(image, white, rowsize * rrect.h);
     fprintf(stderr, "Warning: Page %d rendered as empty mask.\n", pageno);
   }
@@ -96,7 +97,10 @@ void render(ddjvu_page_t *page, int pageno) {
     if (fwrite(image, 1, rowsize, fout) < (size_t)rowsize)
       die("writing mask file: %s", strerror(errno));
 
-  ddjvu_format_release(fmt);
+  ddjvu_format_release(format);
+  free(image);
+}
+
 int main(int argc, char **argv) {
   if (argc < 2) {
     fprintf(stderr, "Usage: djvu2mask <djvufile> [<outputfile>]\n");
@@ -122,6 +126,20 @@ int main(int argc, char **argv) {
   if (!page) die("Failed to load page 0.");
 
   fprintf(stderr, "Page 0 loaded, starting render...\n");
+
+  fout = (strcmp(outputfilename, "-") == 0) ? stdout : fopen(outputfilename, "wb");
+  if (!fout) die("Cannot open output file '%s'.", outputfilename);
+
+  render(page, 1);
+
+  fclose(fout);
+  ddjvu_page_release(page);
+  ddjvu_document_release(doc);
+  ddjvu_context_release(ctx);
+
+  return 0;
+}
+
 
   fout = (strcmp(outputfilename, "-") == 0) ? stdout : fopen(outputfilename, "wb");
   if (!fout) die("Cannot open output file '%s'.", outputfilename);
