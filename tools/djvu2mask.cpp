@@ -1,6 +1,8 @@
 /* Program created by Chat GPT
 #include <cstdarg>
 
+#include <cstdarg>
+
  */
 
 #ifdef HAVE_CONFIG_H
