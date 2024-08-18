@@ -95,10 +95,6 @@ void render(ddjvu_page_t *page, int pageno) {
       die("writing mask file: %s", strerror(errno));
 
   ddjvu_format_release(fmt);
-  free(image);
-}
-
-
 int main(int argc, char **argv) {
   if (argc < 2) {
     fprintf(stderr, "Usage: djvu2mask <djvufile> [<outputfile>]\n");
@@ -110,18 +106,34 @@ int main(int argc, char **argv) {
 
   programname = argv[0];
   ctx = ddjvu_context_create(programname);
-if (!ctx) die("Cannot create djvu context. Error code: %d", errno);
+  if (!ctx) die("Cannot create djvu context. Error code: %d", errno);
 
   doc = ddjvu_document_create_by_filename(ctx, inputfilename, TRUE);
   if (!doc) die("Cannot open djvu document '%s'. Error code: %d", inputfilename, errno);
 
+  fprintf(stderr, "Document loaded: %s\n", inputfilename);
+  while (!ddjvu_document_decoding_done(doc)) {
+    fprintf(stderr, "Decoding in progress...\n");
+  }
 
-  while (!ddjvu_document_decoding_done(doc)) {}
+  ddjvu_page_t *page = ddjvu_page_create_by_pageno(doc, 0);
+  if (!page) die("Failed to load page 0.");
+
+  fprintf(stderr, "Page 0 loaded, starting render...\n");
 
   fout = (strcmp(outputfilename, "-") == 0) ? stdout : fopen(outputfilename, "wb");
   if (!fout) die("Cannot open output file '%s'.", outputfilename);
 
-  render(ddjvu_page_create_by_pageno(doc, 0), 1);
+  render(page, 1);
+
+  fclose(fout);
+  ddjvu_page_release(page);
+  ddjvu_document_release(doc);
+  ddjvu_context_release(ctx);
+
+  return 0;
+}
+
 
   fclose(fout);
   ddjvu_document_release(doc);
