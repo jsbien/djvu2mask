@@ -43,5 +43,6 @@ jobs:
         run: ls -l
 
       - name: Run the program with repository file
-        run: ./tools/djvu2mask test/Hochfeder-02_PT01_020bis.djvu test/Hochfeder-02_PT01_020bis_output.png
+        run: ./tools/djvu2mask test/Hochfeder-02_PT01_020bis.djvu test/Hochfeder-02_PT01_020bis_output.pbm
+	
 
