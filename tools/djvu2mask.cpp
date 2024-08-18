@@ -57,6 +57,8 @@ void die(const char *fmt, ...) {
   va_end(args);
   fprintf(stderr,"\n");
 void render(ddjvu_page_t *page, int pageno) {
+}
+
   ddjvu_rect_t prect;
   ddjvu_rect_t rrect;
   ddjvu_format_t *fmt;
