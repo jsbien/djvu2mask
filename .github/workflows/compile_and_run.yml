@@ -1,4 +1,4 @@
-name: Debug and Build with Make on Debian
+name: Debug and Force Rebuild with Make on Debian
 
 on:
   push:
@@ -25,8 +25,11 @@ jobs:
       - name: Install dependencies
         run: apt-get update && apt-get install -y build-essential libjpeg-dev libtiff-dev
 
-      - name: Debug build with make
-        run: make -d
+      - name: Force rebuild with make
+        run: make -B VERBOSE=1
+
+      - name: Debug with make -n
+        run: make -n VERBOSE=1
 
       - name: List files in tools directory (debug)
         run: ls -l tools/
