@@ -1,8 +1,4 @@
-/* Program created by Chat GPT
- */
-
 #include <cstdarg>
-
 
 #ifdef HAVE_CONFIG_H
 # include "config.h"
@@ -42,21 +38,21 @@ FILE *fout = 0;
 
 unsigned long ticks(void) {
 #ifdef UNIX
-  struct timeval tv;
-  if (gettimeofday(&tv, NULL) >= 0)
-    return (unsigned long)(((tv.tv_sec & 0xfffff)*1000)+(tv.tv_usec/1000));
+    struct timeval tv;
+    if (gettimeofday(&tv, NULL) >= 0)
+        return (unsigned long)(((tv.tv_sec & 0xfffff) * 1000) + (tv.tv_usec / 1000));
 #endif
-  return 0;
+    return 0;
 }
 
 void die(const char *message_fmt, ...) {
-  va_list args;
-  fprintf(stderr, "djvu2mask: ");
-  va_start(args, message_fmt);
-  vfprintf(stderr, message_fmt, args);
-  va_end(args);
-  fprintf(stderr, "\n");
-  exit(10);
+    va_list args;
+    fprintf(stderr, "djvu2mask: ");
+    va_start(args, message_fmt);
+    vfprintf(stderr, message_fmt, args);
+    va_end(args);
+    fprintf(stderr, "\n");
+    exit(10);
 }
 
 void render(ddjvu_page_t *render_page, int pageno) {
@@ -101,30 +97,7 @@ void render(ddjvu_page_t *render_page, int pageno) {
     free(image);
 }
 
-  fout = (strcmp(outputfilename, "-") == 0) ? stdout : fopen(outputfilename, "wb");
-  if (!fout) die("Cannot open output file '%s'.", outputfilename);
-
-  render(page, 1);
-
-  fclose(fout);
-  ddjvu_page_release(page);
-  ddjvu_document_release(doc);
-  ddjvu_context_release(ctx);
-
-  return 0;
-}
-
-
-  fclose(fout);
-  ddjvu_document_release(doc);
-  ddjvu_context_release(ctx);
-
-  return 0;
-}
-
-
 int main(int argc, char **argv) {
-    FILE *fout;
     if (argc < 2) {
         fprintf(stderr, "Usage: djvu2mask <djvufile> [<outputfile>]\n");
         exit(1);
@@ -162,3 +135,4 @@ int main(int argc, char **argv) {
 
     return 0;
 }
+
