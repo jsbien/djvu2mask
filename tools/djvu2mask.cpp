@@ -106,10 +106,11 @@ int main(int argc, char **argv) {
 
   programname = argv[0];
   ctx = ddjvu_context_create(programname);
-  if (!ctx) die("Cannot create djvu context.");
+if (!ctx) die("Cannot create djvu context. Error code: %d", errno);
 
   doc = ddjvu_document_create_by_filename(ctx, inputfilename, TRUE);
-  if (!doc) die("Cannot open djvu document '%s'.", inputfilename);
+  if (!doc) die("Cannot open djvu document '%s'. Error code: %d", inputfilename, errno);
+
 
   while (!ddjvu_document_decoding_done(doc)) {}
 
