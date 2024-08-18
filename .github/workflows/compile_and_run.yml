@@ -1,4 +1,4 @@
-name: Debug and Force Rebuild with Make on Debian
+name: Install Autotools and Rebuild with Make on Debian
 
 on:
   push:
@@ -22,8 +22,11 @@ jobs:
       - name: Print environment variables
         run: env
 
-      - name: Install dependencies
-        run: apt-get update && apt-get install -y build-essential libjpeg-dev libtiff-dev
+      - name: Install dependencies including Autotools
+        run: apt-get update && apt-get install -y build-essential libjpeg-dev libtiff-dev autotools-dev autoconf automake libtool
+
+      - name: Regenerate Autotools files
+        run: autoreconf -i
 
       - name: Force rebuild with make
         run: make -B VERBOSE=1
