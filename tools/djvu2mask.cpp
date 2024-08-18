@@ -56,9 +56,6 @@ void die(const char *fmt, ...) {
   vfprintf(stderr, fmt, args);
   va_end(args);
   fprintf(stderr,"\n");
-  exit(10);
-}
-
 void render(ddjvu_page_t *page, int pageno) {
   ddjvu_rect_t prect;
   ddjvu_rect_t rrect;
@@ -69,6 +66,9 @@ void render(ddjvu_page_t *page, int pageno) {
   char white = (char)0xFF;
   int rowsize;
 
+  // Debug: Output page dimensions
+  fprintf(stderr, "Rendering page %d: width=%d, height=%d\n", pageno, iw, ih);
+
   prect.x = 0;
   prect.y = 0;
   prect.w = iw;
@@ -77,14 +77,17 @@ void render(ddjvu_page_t *page, int pageno) {
   rrect = prect;
 
   fmt = ddjvu_format_create(DDJVU_FORMAT_MSBTOLSB, 0, 0);
+  if (!fmt) die("Failed to create format for rendering.");
   ddjvu_format_set_row_order(fmt, 1);
 
   rowsize = (rrect.w + 7) / 8;
   image = (char*)malloc(rowsize * rrect.h);
   if (!image) die("Cannot allocate image buffer for page %d", pageno);
 
-  if (!ddjvu_page_render(page, DDJVU_RENDER_MASKONLY, &prect, &rrect, fmt, rowsize, image))
+  if (!ddjvu_page_render(page, DDJVU_RENDER_MASKONLY, &prect, &rrect, fmt, rowsize, image)) {
     memset(image, white, rowsize * rrect.h);
+    fprintf(stderr, "Warning: Page %d rendered as empty mask.\n", pageno);
+  }
 
   fprintf(fout, "P4\n%d %d\n", rrect.w, rrect.h);
   for (int i = 0; i < (int)rrect.h; i++, image += rowsize)
@@ -94,6 +97,7 @@ void render(ddjvu_page_t *page, int pageno) {
   ddjvu_format_release(fmt);
   free(image);
 }
+
 
 int main(int argc, char **argv) {
   if (argc < 2) {
