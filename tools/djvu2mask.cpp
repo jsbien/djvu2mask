@@ -59,8 +59,7 @@ void die(const char *message_fmt, ...) {
   exit(10);
 }
 
-void render(ddjvu_page_t *page, int pageno) {
-  ddjvu_rect_t prect;
+void render(ddjvu_page_t *render_page, int pageno) {
   ddjvu_rect_t rrect;
   ddjvu_format_t *format;
   int iw = ddjvu_page_get_width(page);
