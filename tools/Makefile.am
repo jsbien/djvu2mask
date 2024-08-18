@@ -1,9 +1,5 @@
 bin_PROGRAMS = ddjvu djvu2mask
 
-jb2cmp_SOURCES = jb2cmp/classify.cpp jb2cmp/cuts.cpp		\
- jb2cmp/frames.cpp jb2cmp/patterns.cpp jb2cmp/classify.h	\
- jb2cmp/mdjvucfg.h jb2cmp/minidjvu.h jb2cmp/patterns.h
-
 AM_CPPFLAGS = -I$(top_srcdir)/libdjvu
 AM_CXXFLAGS = $(PTHREAD_CFLAGS)
 
