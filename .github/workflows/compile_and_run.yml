@@ -24,16 +24,9 @@ jobs:
           apt-get update
           apt-get install -y build-essential libjpeg-dev libtiff-dev autotools-dev autoconf automake libtool git
 
-      - name: Initialize git repository if required
+      - name: Set safe Git directory
         run: |
-          cd $GITHUB_WORKSPACE
-          if [ ! -d .git ]; then
-            git init
-            git config --global --add safe.directory /__w/djvu2mask
-            git remote add origin $GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git
-            git fetch
-            git checkout $GITHUB_REF_NAME
-          fi
+          git config --global --add safe.directory /__w/djvu2mask/djvu2mask
 
       - name: Clean untracked files
         if: always()
