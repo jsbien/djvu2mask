@@ -52,8 +52,14 @@ jobs:
       - name: List files in tools directory (debug)
         run: ls -l tools/
 
+      - name: Clean untracked files before git operations
+        run: |
+          git clean -fdx
+          git reset --hard
+
       - name: Initialize git repository if required
         run: |
+          cd $GITHUB_WORKSPACE
           if [ ! -d .git ]; then
             git init
             git remote add origin $GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git
