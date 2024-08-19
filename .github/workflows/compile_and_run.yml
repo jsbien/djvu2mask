@@ -26,20 +26,24 @@ jobs:
 
       - name: Set safe Git directory
         run: |
-          git config --global --add safe.directory /__w/djvu2mask/djvu2mask
+          git config --global --add safe.directory $GITHUB_WORKSPACE
 
-      - name: Ensure correct working directory for Git operations
+      - name: Ensure correct working directory
         run: |
-          cd /__w/djvu2mask/djvu2mask
+          cd $GITHUB_WORKSPACE
+          echo "Current working directory: $(pwd)"
+          ls -la
 
       - name: Clean untracked files
         if: always()
         run: |
+          cd $GITHUB_WORKSPACE
           git clean -fdx || echo "Not in a git repository, skipping clean"
           git reset --hard || echo "Not in a git repository, skipping reset"
 
       - name: Clean environment and remove old build files
         run: |
+          cd $GITHUB_WORKSPACE
           make distclean || true
           rm -f Makefile
           rm -f config.status
@@ -51,20 +55,28 @@ jobs:
           rm -f config/depcomp
 
       - name: Regenerate Autotools files
-        run: autoreconf -fvi
+        run: |
+          cd $GITHUB_WORKSPACE
+          autoreconf -fvi
 
       - name: Run configure script to generate Makefile
-        run: ./configure
+        run: |
+          cd $GITHUB_WORKSPACE
+          ./configure
 
       - name: Build with make
-        run: make -B VERBOSE=1
+        run: |
+          cd $GITHUB_WORKSPACE
+          make -B VERBOSE=1
 
       - name: List files in tools directory (debug)
-        run: ls -l tools/
+        run: |
+          cd $GITHUB_WORKSPACE
+          ls -l tools/
 
       - name: Commit and push the output file
         run: |
-          cd /__w/djvu2mask/djvu2mask
+          cd $GITHUB_WORKSPACE
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add test/Hochfeder-02_PT01_020bis_output.pbm
