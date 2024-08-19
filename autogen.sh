@@ -1,7 +1,14 @@
-#! /bin/sh
+#!/bin/sh
 
-autoreconf -f -i -v --warnings=all || exit 1
+# Ensure we're in the source directory
+srcdir=$(dirname "$0")
+test -n "$srcdir" && cd "$srcdir"
 
-if [ -z "$NOCONFIGURE" ]; then
-	./configure "$@"
-fi
+# Clean previous configuration
+rm -f config.cache
+
+# Run autoreconf to regenerate configure and other build files
+autoreconf --force --install --verbose
+
+# Run configure with the --prefix option to ensure relative paths
+./configure --prefix=$PWD/build "$@"
