@@ -28,6 +28,22 @@ jobs:
         run: |
           git config --global --add safe.directory /__w/djvu2mask/djvu2mask
 
+      - name: Initialize git repository if required
+        run: |
+          cd $GITHUB_WORKSPACE
+          if [ ! -d .git ]; then
+            git init
+            git remote add origin $GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git
+            git fetch
+            git checkout $GITHUB_REF_NAME
+          fi
+
+      - name: Clean untracked files
+        if: always()
+        run: |
+          git clean -fdx || echo "Not in a git repository, skipping clean"
+          git reset --hard || echo "Not in a git repository, skipping reset"
+
       - name: Clean environment and remove old build files
         run: |
           make distclean || true
@@ -51,21 +67,6 @@ jobs:
 
       - name: List files in tools directory (debug)
         run: ls -l tools/
-
-      - name: Clean untracked files before git operations
-        run: |
-          git clean -fdx
-          git reset --hard
-
-      - name: Initialize git repository if required
-        run: |
-          cd $GITHUB_WORKSPACE
-          if [ ! -d .git ]; then
-            git init
-            git remote add origin $GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git
-            git fetch
-            git checkout $GITHUB_REF_NAME
-          fi
 
       - name: Commit and push the output file
         run: |
