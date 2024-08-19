@@ -16,10 +16,10 @@ jobs:
       image: debian:latest
 
     steps:
-      - name: Force Checkout code
+      - name: Checkout code
         uses: actions/checkout@v2
         with:
-          path: ${{ github.workspace }}/djvu2mask
+          path: ${{ github.workspace }}
 
       - name: Install dependencies
         run: |
@@ -28,11 +28,11 @@ jobs:
 
       - name: Set safe Git directory
         run: |
-          git config --global --add safe.directory $GITHUB_WORKSPACE/djvu2mask
+          git config --global --add safe.directory $GITHUB_WORKSPACE
 
       - name: Ensure correct working directory
         run: |
-          cd $GITHUB_WORKSPACE/djvu2mask
+          cd $GITHUB_WORKSPACE
           echo "After changing to GITHUB_WORKSPACE: $(pwd)"
           ls -la
           if [ -d .git ]; then
@@ -74,7 +74,7 @@ jobs:
 
       - name: Commit and push the output file
         run: |
-          cd $GITHUB_WORKSPACE/djvu2mask
+          cd $GITHUB_WORKSPACE
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add test/Hochfeder-02_PT01_020bis_output.pbm
