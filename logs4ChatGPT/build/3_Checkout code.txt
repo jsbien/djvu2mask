@@ -1,0 +1,25 @@
+﻿2024-08-19T04:44:50.3014386Z ##[group]Run actions/checkout@v2
+2024-08-19T04:44:50.3014859Z with:
+2024-08-19T04:44:50.3015299Z   repository: jsbien/djvu2mask
+2024-08-19T04:44:50.3015959Z   token: ***
+2024-08-19T04:44:50.3016299Z   ssh-strict: true
+2024-08-19T04:44:50.3016744Z   persist-credentials: true
+2024-08-19T04:44:50.3017142Z   clean: true
+2024-08-19T04:44:50.3017440Z   fetch-depth: 1
+2024-08-19T04:44:50.3017883Z   lfs: false
+2024-08-19T04:44:50.3018226Z   submodules: false
+2024-08-19T04:44:50.3018539Z   set-safe-directory: true
+2024-08-19T04:44:50.3018982Z ##[endgroup]
+2024-08-19T04:44:50.3140737Z ##[command]/usr/bin/docker exec  4a4681a6e79a6cfff198e290c143432351e8b72be6c6a9c45eb20aa341962b20 sh -c "cat /etc/*release | grep ^ID"
+2024-08-19T04:44:50.7298677Z Syncing repository: jsbien/djvu2mask
+2024-08-19T04:44:50.7301188Z ##[group]Getting Git version info
+2024-08-19T04:44:50.7302158Z Working directory is '/__w/djvu2mask/djvu2mask'
+2024-08-19T04:44:50.7303611Z ##[endgroup]
+2024-08-19T04:44:50.7304426Z Deleting the contents of '/__w/djvu2mask/djvu2mask'
+2024-08-19T04:44:50.7305780Z The repository will be downloaded using the GitHub REST API
+2024-08-19T04:44:50.7307064Z To create a local Git repository instead, add Git 2.18 or higher to the PATH
+2024-08-19T04:44:50.7308283Z Downloading the archive
+2024-08-19T04:44:53.2321313Z Writing archive to disk
+2024-08-19T04:44:53.2561407Z Extracting the archive
+2024-08-19T04:44:53.2581294Z [command]/usr/bin/tar xz -C /__w/djvu2mask/djvu2mask/11861fcc-fd9d-4d18-9598-421b005e2e6a -f /__w/djvu2mask/djvu2mask/11861fcc-fd9d-4d18-9598-421b005e2e6a.tar.gz
+2024-08-19T04:44:53.5715533Z Resolved version jsbien-djvu2mask-05555ae

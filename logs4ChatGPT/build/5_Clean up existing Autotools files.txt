@@ -1,0 +1,10 @@
+﻿2024-08-19T04:45:07.9843448Z ##[group]Run rm -f aclocal.m4
+2024-08-19T04:45:07.9843899Z [36;1mrm -f aclocal.m4[0m
+2024-08-19T04:45:07.9844413Z [36;1mrm -rf autom4te.cache[0m
+2024-08-19T04:45:07.9844809Z [36;1mrm -f config.h.in[0m
+2024-08-19T04:45:07.9845167Z [36;1mrm -f configure[0m
+2024-08-19T04:45:07.9845617Z [36;1mrm -f Makefile.in[0m
+2024-08-19T04:45:07.9845999Z [36;1mrm -f config/missing[0m
+2024-08-19T04:45:07.9846379Z [36;1mrm -f config/depcomp[0m
+2024-08-19T04:45:07.9846897Z shell: sh -e {0}
+2024-08-19T04:45:07.9847229Z ##[endgroup]

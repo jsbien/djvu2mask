@@ -1,0 +1,36 @@
+﻿2024-08-19T04:45:08.0682783Z ##[group]Run autoreconf -fvi
+2024-08-19T04:45:08.0683198Z [36;1mautoreconf -fvi[0m
+2024-08-19T04:45:08.0683726Z shell: sh -e {0}
+2024-08-19T04:45:08.0684052Z ##[endgroup]
+2024-08-19T04:45:08.1778004Z autoreconf: export WARNINGS=
+2024-08-19T04:45:08.1791309Z autoreconf: Entering directory '.'
+2024-08-19T04:45:08.1796540Z autoreconf: configure.ac: not using Gettext
+2024-08-19T04:45:09.1800991Z autoreconf: running: aclocal --force -I config
+2024-08-19T04:45:09.9172188Z autoreconf: configure.ac: tracing
+2024-08-19T04:45:10.2546445Z autoreconf: running: libtoolize --copy --force
+2024-08-19T04:45:10.3145712Z libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'config'.
+2024-08-19T04:45:10.3146694Z libtoolize: copying file 'config/ltmain.sh'
+2024-08-19T04:45:10.3386470Z libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'config'.
+2024-08-19T04:45:10.3387488Z libtoolize: copying file 'config/libtool.m4'
+2024-08-19T04:45:10.3500420Z libtoolize: copying file 'config/ltoptions.m4'
+2024-08-19T04:45:10.3624285Z libtoolize: copying file 'config/ltsugar.m4'
+2024-08-19T04:45:10.3759921Z libtoolize: copying file 'config/ltversion.m4'
+2024-08-19T04:45:10.3905661Z libtoolize: copying file 'config/lt~obsolete.m4'
+2024-08-19T04:45:10.4076579Z autoreconf: configure.ac: not using Intltool
+2024-08-19T04:45:10.4077426Z autoreconf: configure.ac: not using Gtkdoc
+2024-08-19T04:45:10.4078286Z autoreconf: running: aclocal --force -I config
+2024-08-19T04:45:11.1584950Z autoreconf: running: /usr/bin/autoconf --force
+2024-08-19T04:45:11.4659520Z configure.ac:41: warning: The macro `AC_CONFIG_HEADER' is obsolete.
+2024-08-19T04:45:11.4660654Z configure.ac:41: You should run autoupdate.
+2024-08-19T04:45:11.4661874Z ./lib/autoconf/status.m4:719: AC_CONFIG_HEADER is expanded from...
+2024-08-19T04:45:11.4662845Z configure.ac:41: the top level
+2024-08-19T04:45:11.4663839Z configure.ac:161: warning: The macro `AC_HEADER_TIME' is obsolete.
+2024-08-19T04:45:11.4664907Z configure.ac:161: You should run autoupdate.
+2024-08-19T04:45:11.4665873Z ./lib/autoconf/headers.m4:743: AC_HEADER_TIME is expanded from...
+2024-08-19T04:45:11.4666906Z configure.ac:161: the top level
+2024-08-19T04:45:11.5966144Z autoreconf: running: /usr/bin/autoheader --force
+2024-08-19T04:45:11.9354919Z autoreconf: running: automake --add-missing --copy --force-missing
+2024-08-19T04:45:12.2001539Z configure.ac:46: installing 'config/compile'
+2024-08-19T04:45:12.2078860Z configure.ac:44: installing 'config/missing'
+2024-08-19T04:45:12.2597429Z libdjvu/Makefile.am: installing 'config/depcomp'
+2024-08-19T04:45:12.4113911Z autoreconf: Leaving directory '.'
