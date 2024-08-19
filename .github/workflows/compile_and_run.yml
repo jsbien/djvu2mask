@@ -24,6 +24,10 @@ jobs:
           apt-get update
           apt-get install -y build-essential libjpeg-dev libtiff-dev autotools-dev autoconf automake libtool git
 
+      - name: Set safe Git directory
+        run: |
+          git config --global --add safe.directory /__w/djvu2mask/djvu2mask
+
       - name: Clean environment and remove old build files
         run: |
           make distclean || true
@@ -57,10 +61,6 @@ jobs:
             git fetch
             git checkout $GITHUB_REF_NAME
           fi
-
-      - name: Set safe Git directory
-        run: |
-          git config --global --add safe.directory $GITHUB_WORKSPACE
 
       - name: Commit and push the output file
         run: |
