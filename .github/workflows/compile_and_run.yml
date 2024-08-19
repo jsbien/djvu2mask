@@ -77,8 +77,8 @@ jobs:
       - name: Build with make
         run: make -B VERBOSE=1
 
-      - name: List files in tools directory (debug)
-        run: ls -l tools/
+      - name: List files in test directory
+        run: ls -l $GITHUB_WORKSPACE/test/
 
       - name: Commit and push the output file
         run: |
