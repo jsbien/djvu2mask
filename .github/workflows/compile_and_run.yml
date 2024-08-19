@@ -1,4 +1,4 @@
-The problem is different, I just noticed the message on https://github.com/jsbien/djvu2mask/actions/runs/10451208115 (can you access it): "name: Build and Run djvu2mask
+name: Build and Run djvu2mask
 
 on:
   push:
