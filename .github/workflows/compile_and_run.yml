@@ -50,12 +50,17 @@ jobs:
 
       - name: Initialize git repository if not detected
         run: |
+          cd $GITHUB_WORKSPACE
           if [ ! -d .git ]; then
             git init
             git remote add origin $GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git
             git fetch
             git checkout $GITHUB_REF_NAME
           fi
+
+      - name: Set safe Git directory
+        run: |
+          git config --global --add safe.directory $GITHUB_WORKSPACE
 
       - name: Commit and push the output file
         run: |
