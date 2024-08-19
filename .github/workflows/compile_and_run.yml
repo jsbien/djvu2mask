@@ -26,7 +26,7 @@ jobs:
 
       - name: Set safe Git directory
         run: |
-          git config --global --add safe.directory /__w/djvu2mask/djvu2mask
+          git config --global --add safe.directory /__w/djvu2mask
 
       - name: Initialize git repository if required
         run: |
