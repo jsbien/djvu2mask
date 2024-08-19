@@ -36,8 +36,11 @@ jobs:
           rm -f config/missing
           rm -f config/depcomp
 
-      - name: Regenerate Autotools files with correct paths
+      - name: Regenerate Autotools files
         run: autoreconf -fvi
+
+      - name: Run configure script to generate Makefile
+        run: ./configure
 
       - name: Build with make
         run: make -B VERBOSE=1
