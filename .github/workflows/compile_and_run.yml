@@ -79,4 +79,4 @@ jobs:
 
       - name: Run djvu2mask
         run: |
-          ./tools/djvu2mask test/Hochfeder-02_PT01_020bis.d
+          ./tools/djvu2mask test/Hochfeder-02_PT01_020bis.djvu
