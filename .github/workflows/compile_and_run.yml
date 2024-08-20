@@ -80,7 +80,9 @@ jobs:
       - name: Run djvu2mask
         run: |
           ./tools/djvu2mask test/Hochfeder-02_PT01_020bis.djvu test/Hochfeder-02_PT01_020bis_mask_djvumask.pbm
+          echo "djvumask finished"
           ./tools/ddjvu -mode=mask test/Hochfeder-02_PT01_020bis.djvu test/Hochfeder-02_PT01_020bis_mask_ddjvu.pbm
+          echo "ddjvu finished"
 
       - name: List files in test directory
         run: ls -l $GITHUB_WORKSPACE/test/
