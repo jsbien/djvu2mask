@@ -1,6 +1,9 @@
 # ChatGPT
 import os
 import subprocess
+import sys
+
+
 
 def extract_masks(directory):
     # Ensure the directory exists
@@ -20,10 +23,19 @@ def extract_masks(directory):
             subprocess.run(["ddjvu", "-format=pbm", "-mode=mask", djvu_file, pbm_file])
 
             # Step 2: Convert PBM to PNG using ImageMagick
-            subprocess.run(["convert", pbm_file, "-threshold", "50%", "-monochrome", png_file])
+            subprocess.run(["convert", pbm_file, png_file])
 
-            # Step 3: Remove the original PBM file
-            os.remove(pbm_file)
+            # Step 3: Keep the PBM file for further investigation
+
+            print(f"Processed {djvu_file}")
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python djvu2maskBF.py <directory_path>")
+    else:
+        directory = sys.argv[1]
+        extract_masks(directory)
+
 
             print(f"Processed {djvu_file}")
 
