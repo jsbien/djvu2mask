@@ -37,8 +37,8 @@ if __name__ == "__main__":
         extract_masks(directory)
 
 
-            print(f"Processed {djvu_file}")
+#            print(f"Processed {djvu_file}")
 
 # Example usage
-directory = "/home/jsbien/git/early_fonts_inventory/font_tables/oDjvu"
-extract_masks(directory)
+# directory = "/home/jsbien/git/early_fonts_inventory/font_tables/oDjvu"
+# extract_masks(directory)
