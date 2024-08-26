@@ -4,7 +4,6 @@ import subprocess
 import sys
 
 
-
 def extract_masks(directory):
     # Ensure the directory exists
     if not os.path.exists(directory):
@@ -22,8 +21,21 @@ def extract_masks(directory):
             # Step 1: Extract the mask
             subprocess.run(["ddjvu", "-format=pbm", "-mode=mask", djvu_file, pbm_file])
 
-            # Step 2: Convert PBM to PNG using ImageMagick
-            subprocess.run(["convert", pbm_file, png_file])
+            # Step 2: Convert PBM to PNG using pngquant for binary output
+            subprocess.run(["pngquant", "--force", "--ext", ".png", "--quality=0-100", "--speed", "1", "--posterize", "1", pbm_file])
+
+            # Keep the PBM file for further investigation
+            # The resulting PNG should now be binary
+
+            print(f"Processed {djvu_file}")
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python djvu2maskBF.py <directory_path>")
+    else:
+        directory = sys.argv[1]
+        extract_masks(directory)
+
 
             # Step 3: Keep the PBM file for further investigation
 
