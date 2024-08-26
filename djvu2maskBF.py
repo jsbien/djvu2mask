@@ -20,7 +20,7 @@ def extract_masks(directory):
             subprocess.run(["ddjvu", "-format=pbm", "-mode=mask", djvu_file, pbm_file])
 
             # Step 2: Convert PBM to PNG using ImageMagick
-            subprocess.run(["convert", pbm_file, png_file])
+subprocess.run(["convert", pbm_file, "-threshold", "50%", "-monochrome", png_file])
 
             # Step 3: Remove the original PBM file
             os.remove(pbm_file)
