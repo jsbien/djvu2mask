@@ -1,4 +1,7 @@
-# ChatGPT
+#!/usr/bin/env python3
+# djvu2maskBF - "brute force"
+# Janusz S. Bień and ChatGPT 2024
+
 import os
 import subprocess
 import sys
@@ -15,17 +18,11 @@ def extract_masks(directory):
         if filename.endswith(".djvu"):
             djvu_file = os.path.join(directory, filename)
             base_name = os.path.splitext(djvu_file)[0]
-            pbm_file = f"{base_name}_mask.pbm"
-            png_file = f"{base_name}_mask.png"
+            tiff_file = f"{base_name}_mask.tiff"
 
             # Step 1: Extract the mask
-            subprocess.run(["ddjvu", "-format=pbm", "-mode=mask", djvu_file, pbm_file])
-
-            # Step 2: Convert PBM to PNG using pngquant for binary output
-            subprocess.run(["pngquant", "--force", "--ext", ".png", "--quality=0-100", "--speed", "1", "--posterize", "1", pbm_file])
-
-            # Keep the PBM file for further investigation
-            # The resulting PNG should now be binary
+            subprocess.run(["ddjvu", "-format=tiff", "-mode=mask", djvu_file, tiff_file])
+            subprocess.run(["identify", tiff_file])
 
             print(f"Processed {djvu_file}")
 
@@ -35,22 +32,3 @@ if __name__ == "__main__":
     else:
         directory = sys.argv[1]
         extract_masks(directory)
-
-
-            # Step 3: Keep the PBM file for further investigation
-
-            print(f"Processed {djvu_file}")
-
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python djvu2maskBF.py <directory_path>")
-    else:
-        directory = sys.argv[1]
-        extract_masks(directory)
-
-
-#            print(f"Processed {djvu_file}")
-
-# Example usage
-# directory = "/home/jsbien/git/early_fonts_inventory/font_tables/oDjvu"
-# extract_masks(directory)
