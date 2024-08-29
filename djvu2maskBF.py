@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# djvu2maskBF - "brute force"
+# djvu2mask
 # Janusz S. Bień and ChatGPT 2024
 
 import os
@@ -22,13 +22,13 @@ def extract_masks(directory):
 
             # Step 1: Extract the mask
             subprocess.run(["ddjvu", "-format=tiff", "-mode=mask", djvu_file, tiff_file])
-            subprocess.run(["identify", tiff_file])
+            subprocess.run(["identify",  tiff_file])
 
             print(f"Processed {djvu_file}")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python djvu2maskBF.py <directory_path>")
+        print("Usage: python3 djvu2mask.py <directory_path>")
     else:
         directory = sys.argv[1]
         extract_masks(directory)
