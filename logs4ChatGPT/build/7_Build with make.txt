@@ -1,8 +1,0 @@
-﻿2024-08-19T04:45:12.4184928Z ##[group]Run make -B VERBOSE=1
-2024-08-19T04:45:12.4185526Z [36;1mmake -B VERBOSE=1[0m
-2024-08-19T04:45:12.4185938Z shell: sh -e {0}
-2024-08-19T04:45:12.4186267Z ##[endgroup]
-2024-08-19T04:45:12.4944781Z CDPATH="${ZSH_VERSION+.}:" && cd . && /bin/bash '/home/jsbien/git/djvu2mask/config/missing' aclocal-1.16 -I config
-2024-08-19T04:45:12.4965949Z /bin/bash: /home/jsbien/git/djvu2mask/config/missing: No such file or directory
-2024-08-19T04:45:12.4967655Z make: *** [Makefile:397: aclocal.m4] Error 127
-2024-08-19T04:45:12.5006982Z ##[error]Process completed with exit code 2.

@@ -1,2 +1,0 @@
-﻿2024-08-19T04:45:12.5108404Z Post job cleanup.
-2024-08-19T04:45:12.5113473Z ##[command]/usr/bin/docker exec  4a4681a6e79a6cfff198e290c143432351e8b72be6c6a9c45eb20aa341962b20 sh -c "cat /etc/*release | grep ^ID"
